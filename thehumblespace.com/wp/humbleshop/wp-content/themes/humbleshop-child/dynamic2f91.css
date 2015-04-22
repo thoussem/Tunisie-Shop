@@ -1,0 +1,7 @@
+/* BEGIN hs_css */
+.shopfull {padding-bottom: 30px}
+.shopfull .content article[class*="span"] {margin-left:0}
+
+.bundled_product_title {font-size:1em; text-transform: uppercase}
+.bundle_price .total {text-transform: uppercase }
+/* END hs_css */
