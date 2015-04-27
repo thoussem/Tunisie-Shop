@@ -11,4 +11,10 @@ test2haniktibtfinafs ligne w fassa5t "es" min kilmit test2 ok
 >>>>>>> origin/master
 ________
 NaifarNaifar
+<<<<<<< HEAD
 narjess.123
+=======
+
+
+a5er test
+>>>>>>> origin/master
