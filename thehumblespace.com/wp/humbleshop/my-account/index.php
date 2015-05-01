@@ -240,7 +240,7 @@
 				<!-- Cart Updates -->
 				<div class="counter">
 					<a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i> 
-						<span class="hidden-xs">Totaux</span> </a> : <span class="theme"><span class="amount">0.00 DT</span></span>
+						<span class="hidden-xs">Total</span> </a> : <span class="theme"><span class="amount">0.00 DT</span></span>
 				</div>
 				
 				<!-- Bubble Cart Item -->
