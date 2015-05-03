@@ -6,95 +6,45 @@
 <head>
 		 	<?php
              include("lock.php");
-             
-             
-					if (isset($login_session)){
-						header('Location: index2.php'); }
-				
-             	  $logerror ="";
-             	  $pass_error="";
-             	  $user_error="";
-             	  $reg_username="";
-             	  $username="";
-                  $titre="";
-                  $email="";
-                  $nom="";
-                  $pre="";
-                  $pass1="";
-                  $pass2="";
-                  $success="";
-         
-             if(isset($_POST['seconnecter']))
+             $pass_error="";
+             $pass_success="";
+             $email_success="";
+         	 
+             if(isset($_POST['enregistrer']))
                 {
-                // username and password sent from form 
+                      $pass1=$_POST['reg_password1'];
+                  	  $pass2=$_POST['reg_password2'];
+                	  $reg_email=$_POST['reg_email'];
+                	  
+                	  if(!empty($pass1)){
+                	  	
+                	  	if(!empty($pass2)){
+
+                	  		if($pass1==$pass2){
+                	  			$sql="UPDATE `utilisateurs` SET `password`=$pass1 WHERE `id`=$id ;";
+                				mysqli_query($conn,$sql);
+                				$pass_success="Mot de passe est mit à jour";
+                			}
+                			else{$pass_error="* Les deux mots de passe ne correspondent pas.";}                				
+                         		}
+                	  	else{
+                	  	$pass_error="Vous devez repeter le mo de passe";
+                	  		}
+
+                	  }
+                		
+                		if($reg_email!=$email){
               
-                $username=$_POST['username'];
-				$password=$_POST['password'];
+                			$sql="UPDATE `utilisateurs` SET `email`='$reg_email' WHERE `id`=$id ;";
+                			mysqli_query($conn,$sql);
+                			$email_success="l'adresse email est mit à jour";
+                			$email=$reg_email;
+
+                		}
                 
+                 }            
                 
-                $sql="SELECT `id` FROM `utilisateurs` WHERE (`username`='$username' or `email`='$username') AND `password`='$password' ;";
-                $result=mysqli_query($conn,$sql);
-                $count=mysqli_num_rows($result);
-                
-                
-                // If result matched $myusername and $mypassword, table row must be 1 row
-                if($count==1)
-                {
-               	session_start();
-                $_SESSION['login_user']=$username;
-                if(isset($_POST['rememberme'])){
-                	setcookie('auth',$username,time()+3600*24*3);
-                	}
-                header("location: ../homepage-with-carousel/index.php");
-                }
-                else 
-                {
-                $logerror="* Le nom d'Utilisateur ou le Mot de passe est Incorrecte";
-                   }
             
-                }
-             
-             
-
-                /*************Register********************/
-                if(isset($_POST['sinscrire']))
-                {
-                  $reg_username=$_POST['reg_username'];
-                  $titre=$_POST['reg_titre'];
-                  $email=$_POST['reg_email'];
-                  $nom=$_POST['reg_nom'];
-                  $pre=$_POST['reg_pre'];
-                  $pass1=$_POST['reg_password1'];
-                  $pass2=$_POST['reg_password2'];
-                
-                  if(!user_exist($username,$conn)){
-                 
-                        if($pass1!=$pass2){
-                        		$pass_error="* Les deux mots de passe ne correspondent pas.";}
-                        else{
-                        		
-                        		$sql="INSERT INTO `ecommerce`.`utilisateurs` (`username`, `nom`, `prenom`, `titre`, `email`, `password`) 
-                        		VALUES ('$username', '$nom', '$pre' , '$titre', '$email', '$pass1');";
-                        		mysqli_query($conn,$sql);
-                        		$success="Votre compte a été créé avec succès Merci de se connecter pour activer votre compte ";
-                        	}
-                           }
-                   else{
-              				$user_error="Ulitisateur déjà existe";	}	
-              		                 }
-
-                function user_exist($user,$db){                  
-                    $sql="SELECT `id` FROM `utilisateurs` WHERE (`username`='$user' or `email`='$user');";
-                  	$result=mysqli_query($db,$sql);
-                  	$count=mysqli_num_rows($result);
-                   	if($count==1){
-                   	return true;
-                   }
-                   else{
-
-                   	return false;}
-
-                  }
              
              ?>
 
@@ -219,7 +169,7 @@
 <body class="page page-id-10 page-template page-template-page-full page-template-page-full-php woocommerce-account woocommerce-page wf-active">
 
 			
-
+	
 	
 	<!-- ====== -->
 	<!-- TOPBAR -->
@@ -228,16 +178,34 @@
 		<div class="row">
 			<div class="pull-left greet">
 				<span class="hidden-xs">Bienvenue</span> 					
-				<span class="hidden-xs">client,</span>
-				 <a href="index.php">Connexion ou Créer un compte</a>
-			</div>
+				<span class="hidden-xs">client,</span> 
+				<a href="../my-account/index.php">
+				<?php
+					if (isset($login_session)){
+						echo $nom.' '.$prenom;
+					}
+					else {echo 'Connexion ou Créer un compte';}
+				?>
+			</a>
 
+				&nbsp;&nbsp;
+				
+				<a href="logout.php">
+					<?php
+					if (isset($login_session)){
+						echo "(Déconnexion)";}
+					?>
+				</a>
+
+
+							</div>
 			<div class="pull-right hscart text-right">
 				
 				<!-- Cart Updates -->
 				<div class="counter">
-					<a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i> 
-						<span class="hidden-xs">Total</span> </a> : <span class="theme"><span class="amount">0.00 DT</span></span>
+					<a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>
+					 <span class="hidden-xs">Totaux</span> </a> : 
+					 <span class="theme"><span class="amount">0.00 DT</span></span>
 				</div>
 				
 				<!-- Bubble Cart Item -->
@@ -350,17 +318,10 @@
 							<div class="woocommerce">
 
 
-			<?php if(!empty($success)): ?>
+			<?php if(!empty($pass_success)): ?>
 			<ul class="woocommerce-error alert list-unstyled alert-success">
-			<li><strong>SUCCESS</strong>: <?php echo $success ;?> 
+			<li><strong>SUCCESS</strong>: <?php echo $pass_success ;?> 
 			</li>
-			</ul>
-			<?php endif; ?>
-
-			<?php if(!empty($logerror)): ?>
-			<ul class="woocommerce-error alert list-unstyled alert-danger">
-			<li><strong>ERREUR</strong>: <?php echo $logerror ;?> 
-			<a href="lost-password/">Mot de passe oublier?</a></li>
 			</ul>
 			<?php endif; ?>
 
@@ -371,9 +332,9 @@
 			</ul>
 			<?php endif; ?>
 
-			<?php if(!empty($user_error)): ?>
-			<ul class="woocommerce-error alert list-unstyled alert-danger">
-			<li><strong>ERREUR</strong>: <?php echo $user_error ;?> 
+			<?php if(!empty($email_success)): ?>
+			<ul class="woocommerce-error alert list-unstyled alert-success">
+			<li><strong>SUCCESS</strong>: <?php echo $email_success ;?> 
 			</li>
 			</ul>
 			<?php endif; ?>
@@ -385,47 +346,7 @@
 
 	<div class="col-1 col-sm-6">
 
-		<h5>SE connecter</h5>
-
-		<form method="post" action="" class="login" name="connect">
-
-			<p class="form-group form-row-wide" style="color:red">
-				<label></label>
-			</p>
-			<p class="form-group form-row-wide">
-				<label for="username">Nom d'utilisateur ou adresse e-mail <span class="required">*</span></label>
-				<input type="text" class="input-text form-control" name="username" id="username" value=<?php echo "\"$username\"" ;?> />
-			</p>
-			<p class="form-group form-row-wide">
-				<label for="password">Mot de passe <span class="required">*</span></label>
-				<input class="input-text form-control" type="password" name="password" id="password" />
-			</p>
-
-			
-			<p class="form-row">
-				<input type="hidden" id="_wpnonce" name="_wpnonce" value="d3dd4ec73f" />
-				<input type="hidden" name="_wp_http_referer" value="/wp/humbleshop/my-account/" />	
-				<input type="submit" class="btn btn-default theme" name="seconnecter" value="Se connecter" /> 
-				<label for="rememberme" class="inline">
-				<input name="rememberme" type="checkbox" id="rememberme" value="forever"/> Rester identifié</label>
-			</p>
-			<p class="lost_password">
-				<a href="lost-password/index.html">Mot de passe oublier?</a>
-			</p>
-
-		
-			<label style="color:red">* Requis</span></label>
-
-			
-		</form>
-
-
-	</div>
-
-	<?php if(empty($success)): ?>
-	<div class="col-2 col-sm-6">
-
-		<h5>Enregistrer</h5>
+		<h5>Modifier Votre Compte</h5>
 
 		<form method="post" class="register" action="" name="reg">
 			<p class="form-group form-row-wide" style="color:red">
@@ -433,16 +354,16 @@
 			</p>
 			<p class="form-group form-row-wide">
 				<label for="reg_username">Nom d'utilisateur <span class="required">*</span></label>
-				<input type="text" class="input-text form-control" required  name="reg_username" id="reg_username" value=<?php echo "\"$reg_username\"" ;?> />
+				<input type="text" class="input-text form-control" required  name="reg_username" id="reg_username" disabled="disabled" value=<?php echo "\"$login_session\"" ;?> />
 			</p>
             
             <p class="form-group form-row-wide">
 				<label for="reg_titre">Titre <span class="required">*</span></label>
-				<select class="input-text form-control" required name="reg_titre" id="reg_titre">
-				<option value="" selected="selected">Sélectionner</option>
-				<option value="mr">Monsieur</option>
-				<option value="mm">Madame</option>
-				<option value="mlle">Mademoiselle</option>
+				<select class="input-text form-control" required name="reg_titre" id="reg_titre" disabled="disabled">
+				<option  >Sélectionner</option>
+				<option <?php  if($titre == "mr") echo 'selected="selected"'; ?> >Monsieur</option>
+				<option <?php if($titre == "mm") echo 'selected="selected"'; ?> >Madame</option>
+				<option <?php if($titre == "mlle") echo 'selected="selected"'; ?> >Mademoiselle</option>
 				</select>
 			</p>
 			
@@ -453,22 +374,22 @@
             
             <p class="form-group form-row-wide">
 				<label for="reg_pre">Prénom <span class="required">*</span></label>
-				<input type="text" class="input-text form-control" required name="reg_pre" id="reg_pre" value=<?php echo "\"$pre\"" ;?> />
+				<input type="text" class="input-text form-control" name="reg_pre" id="reg_pre" disabled="disabled" value=<?php echo "\"$prenom\"" ;?> />
 			</p>
             
             <p class="form-group form-row-wide">
 				<label for="reg_nom">Nom <span class="required">*</span></label>
-				<input type="text" class="input-text form-control" required name="reg_nom" id="reg_nom" value=<?php echo "\"$nom\"" ;?> />
+				<input type="text" class="input-text form-control" required name="reg_nom" id="reg_nom" disabled="disabled" value=<?php echo "\"$nom\"" ;?> />
 			</p>
 
 			<p class="form-group form-row-wide">
-				<label for="reg_password1">Mot de passe <span class="required">*</span></label>
-				<input type="password" class="input-text form-control" required name="reg_password1" id="reg_password1" placeholder="6 caractaires Min" minlength="6"/>
+				<label for="reg_password1">Nouveau mot de passe <span class="required">*</span></label>
+				<input type="password" class="input-text form-control"  name="reg_password1" id="reg_password1" placeholder="6 caractaires Min" minlength="6"/>
 			</p>
             
             <p class="form-group form-row-wide">
 				<label for="reg_password2">Saisissez à nouveau le mot de passe <span class="required">*</span></label>
-				<input type="password" class="input-text form-control" required name="reg_password2" id="reg_password2" placeholder="6 caractaires Min" minlength="6"/>
+				<input type="password" class="input-text form-control" name="reg_password2" id="reg_password2" placeholder="6 caractaires Min" minlength="6"/>
 			</p>
             
             <p class="form-group form-row-wide">
@@ -485,14 +406,14 @@
 			<p class="form-row">
 				<input type="hidden" id="_wpnonce" name="_wpnonce" value="53641f801f" />
 				<input type="hidden" name="_wp_http_referer" value="/wp/humbleshop/my-account/" />				
-				<input type="submit" class="btn btn-default theme" name="sinscrire" value="S'inscrire" />
+				<input type="submit" class="btn btn-default theme" name="enregistrer" value="Enregistrer" />
 			</p>
 
 			
 		</form>
 
+
 	</div>
-	<?php endif; ?>
 
 </div>
 
