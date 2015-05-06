@@ -40,8 +40,7 @@
                 // If result matched $myusername and $mypassword, table row must be 1 row
                 if($count==1)
                 {
-               	session_start();
-                $_SESSION['login_user']=$username;
+                 $_SESSION['login_user']=$username;
                 if(isset($_POST['rememberme'])){
                 	setcookie('auth',$username,time()+3600*24*3);
                 	}

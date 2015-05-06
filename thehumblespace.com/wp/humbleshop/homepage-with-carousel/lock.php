@@ -1,5 +1,6 @@
 <?php
 include('conf.php');
+$login_session="";
 session_start();
 if(isset($_SESSION['login_user']) OR isset($_COOKIE['auth'])){
 	if(isset($_SESSION['login_user']))

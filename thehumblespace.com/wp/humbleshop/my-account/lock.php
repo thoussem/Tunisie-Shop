@@ -1,6 +1,12 @@
 <?php
 include('conf.php');
-$login_session;
+$login_session="";
+$id="";
+$nom="";
+$prenom="";
+$titre="";
+$email="";
+session_start();
 if(isset($_SESSION['login_user']) OR isset($_COOKIE['auth'])){
 	if(isset($_SESSION['login_user']))
 	{$verif_user=$_SESSION['login_user'];}
