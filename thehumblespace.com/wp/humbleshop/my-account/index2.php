@@ -6,6 +6,7 @@
 <head>
 		 	<?php
              include("lock.php");
+             
              $pass_error="";
              $pass_success="";
              $email_success="";
@@ -178,8 +179,8 @@
 		<div class="row">
 			<div class="pull-left greet">
 				<span class="hidden-xs">Bienvenue</span> 					
-				<span class="hidden-xs">client,</span> 
-				<a href="../my-account/index.php">
+				<span class="hidden-xs">client,</span>
+				 <a href="../my-account/index.php">
 				<?php
 					if (isset($login_session)){
 						echo $nom.' '.$prenom;
@@ -196,16 +197,14 @@
 						echo "(Déconnexion)";}
 					?>
 				</a>
+			</div>
 
-
-							</div>
 			<div class="pull-right hscart text-right">
 				
 				<!-- Cart Updates -->
 				<div class="counter">
-					<a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>
-					 <span class="hidden-xs">Totaux</span> </a> : 
-					 <span class="theme"><span class="amount">0.00 DT</span></span>
+					<a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i> 
+						<span class="hidden-xs">Total</span> </a> : <span class="theme"><span class="amount">0.00 DT</span></span>
 				</div>
 				
 				<!-- Bubble Cart Item -->
@@ -319,25 +318,25 @@
 
 
 			<?php if(!empty($pass_success)): ?>
-			<ul class="woocommerce-error alert list-unstyled alert-success">
-			<li><strong>SUCCESS</strong>: <?php echo $pass_success ;?> 
-			</li>
-			</ul>
-			<?php endif; ?>
+            <ul class="woocommerce-error alert list-unstyled alert-success">
+            <li><strong>SUCCESS</strong>: <?php echo $pass_success ;?> 
+            </li>
+            </ul>
+            <?php endif; ?>
 
-			<?php if(!empty($pass_error)): ?>
-			<ul class="woocommerce-error alert list-unstyled alert-danger">
-			<li><strong>ERREUR</strong>: <?php echo $pass_error ;?> 
-			</li>
-			</ul>
-			<?php endif; ?>
+            <?php if(!empty($pass_error)): ?>
+            <ul class="woocommerce-error alert list-unstyled alert-danger">
+            <li><strong>ERREUR</strong>: <?php echo $pass_error ;?> 
+            </li>
+            </ul>
+            <?php endif; ?>
 
-			<?php if(!empty($email_success)): ?>
-			<ul class="woocommerce-error alert list-unstyled alert-success">
-			<li><strong>SUCCESS</strong>: <?php echo $email_success ;?> 
-			</li>
-			</ul>
-			<?php endif; ?>
+            <?php if(!empty($email_success)): ?>
+            <ul class="woocommerce-error alert list-unstyled alert-success">
+            <li><strong>SUCCESS</strong>: <?php echo $email_success ;?> 
+            </li>
+            </ul>
+            <?php endif; ?>
 
 
 
@@ -346,74 +345,76 @@
 
 	<div class="col-1 col-sm-6">
 
-		<h5>Modifier Votre Compte</h5>
+		<h5>Modifier votre compte</h5>
 
 		<form method="post" class="register" action="" name="reg">
-			<p class="form-group form-row-wide" style="color:red">
-				
-			</p>
-			<p class="form-group form-row-wide">
-				<label for="reg_username">Nom d'utilisateur <span class="required">*</span></label>
-				<input type="text" class="input-text form-control" required  name="reg_username" id="reg_username" disabled="disabled" value=<?php echo "\"$login_session\"" ;?> />
-			</p>
+            <p class="form-group form-row-wide" style="color:red">
+                
+            </p>
+            <p class="form-group form-row-wide">
+                <label for="reg_username">Nom d'utilisateur <span class="required">*</span></label>
+                <input type="text" class="input-text form-control" required  name="reg_username" id="reg_username" disabled="disabled" value=<?php echo "\"$login_session\"" ;?> />
+            </p>
             
             <p class="form-group form-row-wide">
-				<label for="reg_titre">Titre <span class="required">*</span></label>
-				<select class="input-text form-control" required name="reg_titre" id="reg_titre" disabled="disabled">
-				<option  >Sélectionner</option>
-				<option <?php  if($titre == "mr") echo 'selected="selected"'; ?> >Monsieur</option>
-				<option <?php if($titre == "mm") echo 'selected="selected"'; ?> >Madame</option>
-				<option <?php if($titre == "mlle") echo 'selected="selected"'; ?> >Mademoiselle</option>
-				</select>
-			</p>
-			
-			<p class="form-group form-row-wide">
-				<label for="reg_email">Adresse e-mail <span class="required">*</span></label>
-				<input type="email" class="input-text form-control" required name="reg_email" id="reg_email" value=<?php echo "\"$email\"" ;?> />
-			</p>
+                <label for="reg_titre">Titre <span class="required">*</span></label>
+                <select class="input-text form-control" required name="reg_titre" id="reg_titre" disabled="disabled">
+                <option  >Sélectionner</option>
+                <option <?php  if($titre == "mr") echo 'selected="selected"'; ?> >Monsieur</option>
+                <option <?php if($titre == "mm") echo 'selected="selected"'; ?> >Madame</option>
+                <option <?php if($titre == "mlle") echo 'selected="selected"'; ?> >Mademoiselle</option>
+                </select>
+            </p>
             
             <p class="form-group form-row-wide">
-				<label for="reg_pre">Prénom <span class="required">*</span></label>
-				<input type="text" class="input-text form-control" name="reg_pre" id="reg_pre" disabled="disabled" value=<?php echo "\"$prenom\"" ;?> />
-			</p>
+                <label for="reg_email">Adresse e-mail <span class="required">*</span></label>
+                <input type="email" class="input-text form-control" required name="reg_email" id="reg_email" value=<?php echo "\"$email\"" ;?> />
+            </p>
             
             <p class="form-group form-row-wide">
-				<label for="reg_nom">Nom <span class="required">*</span></label>
-				<input type="text" class="input-text form-control" required name="reg_nom" id="reg_nom" disabled="disabled" value=<?php echo "\"$nom\"" ;?> />
-			</p>
+                <label for="reg_pre">Prénom <span class="required">*</span></label>
+                <input type="text" class="input-text form-control" name="reg_pre" id="reg_pre" disabled="disabled" value=<?php echo "\"$prenom\"" ;?> />
+            </p>
+            
+            <p class="form-group form-row-wide">
+                <label for="reg_nom">Nom <span class="required">*</span></label>
+                <input type="text" class="input-text form-control" required name="reg_nom" id="reg_nom" disabled="disabled" value=<?php echo "\"$nom\"" ;?> />
+            </p>
 
-			<p class="form-group form-row-wide">
-				<label for="reg_password1">Nouveau mot de passe <span class="required">*</span></label>
-				<input type="password" class="input-text form-control"  name="reg_password1" id="reg_password1" placeholder="6 caractaires Min" minlength="6"/>
-			</p>
+            <p class="form-group form-row-wide">
+                <label for="reg_password1">Nouveau mot de passe <span class="required">*</span></label>
+                <input type="password" class="input-text form-control"  name="reg_password1" id="reg_password1" placeholder="6 caractaires Min" minlength="6"/>
+            </p>
             
             <p class="form-group form-row-wide">
-				<label for="reg_password2">Saisissez à nouveau le mot de passe <span class="required">*</span></label>
-				<input type="password" class="input-text form-control" name="reg_password2" id="reg_password2" placeholder="6 caractaires Min" minlength="6"/>
-			</p>
+                <label for="reg_password2">Saisissez à nouveau le mot de passe <span class="required">*</span></label>
+                <input type="password" class="input-text form-control" name="reg_password2" id="reg_password2" placeholder="6 caractaires Min" minlength="6"/>
+            </p>
             
             <p class="form-group form-row-wide">
             
             
 
-			<!-- Spam Trap -->
-			<div style="left: -999em; position: absolute;">
-				<label for="trap">Anti-spam</label>
-				<input type="text" name="email_2" id="trap" tabindex="-1" />
-			</div>
+            <!-- Spam Trap -->
+            <div style="left: -999em; position: absolute;">
+                <label for="trap">Anti-spam</label>
+                <input type="text" name="email_2" id="trap" tabindex="-1" />
+            </div>
 
-						
-			<p class="form-row">
-				<input type="hidden" id="_wpnonce" name="_wpnonce" value="53641f801f" />
-				<input type="hidden" name="_wp_http_referer" value="/wp/humbleshop/my-account/" />				
-				<input type="submit" class="btn btn-default theme" name="enregistrer" value="Enregistrer" />
-			</p>
+                        
+            <p class="form-row">
+                <input type="hidden" id="_wpnonce" name="_wpnonce" value="53641f801f" />
+                <input type="hidden" name="_wp_http_referer" value="/wp/humbleshop/my-account/" />              
+                <input type="submit" class="btn btn-default theme" name="enregistrer" value="Enregistrer" />
+            </p>
 
-			
-		</form>
+            
+        </form>
 
 
 	</div>
+
+	
 
 </div>
 

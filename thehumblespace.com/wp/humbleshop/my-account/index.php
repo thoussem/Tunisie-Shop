@@ -5,13 +5,13 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
 		 	<?php
-             include("lock.php");
-             
-             
-					if (isset($login_session)){
-						header('Location: index2.php'); }
-				
-             	  $logerror ="";
+             include("conf.php");
+             			session_start();
+             	  if(isset($_SESSION['login_user'])){
+             	  	header("location: index2.php");
+             	  }
+
+             	  $error ="";
              	  $pass_error="";
              	  $user_error="";
              	  $reg_username="";
@@ -40,7 +40,8 @@
                 // If result matched $myusername and $mypassword, table row must be 1 row
                 if($count==1)
                 {
-                 $_SESSION['login_user']=$username;
+                
+                $_SESSION['login_user']=$username;
                 if(isset($_POST['rememberme'])){
                 	setcookie('auth',$username,time()+3600*24*3);
                 	}
@@ -48,7 +49,7 @@
                 }
                 else 
                 {
-                $logerror="* Le nom d'Utilisateur ou le Mot de passe est Incorrecte";
+                $error="* Le nom d'Utilisateur ou le Mot de passe est Incorrecte";
                    }
             
                 }
@@ -218,7 +219,7 @@
 <body class="page page-id-10 page-template page-template-page-full page-template-page-full-php woocommerce-account woocommerce-page wf-active">
 
 			
-
+	
 	
 	<!-- ====== -->
 	<!-- TOPBAR -->
@@ -356,9 +357,9 @@
 			</ul>
 			<?php endif; ?>
 
-			<?php if(!empty($logerror)): ?>
+			<?php if(!empty($error)): ?>
 			<ul class="woocommerce-error alert list-unstyled alert-danger">
-			<li><strong>ERREUR</strong>: <?php echo $logerror ;?> 
+			<li><strong>ERREUR</strong>: <?php echo $error ;?> 
 			<a href="lost-password/">Mot de passe oublier?</a></li>
 			</ul>
 			<?php endif; ?>

@@ -1,9 +1,10 @@
 <?php
-setcookie('auth','',time()-3600);
-session_destroy();
-header("Location: index.php");
+setcookie('auth', NULL, -1);
+session_start();
+session_unset ();
+if(session_destroy()){
+header("Location: ../homepage-with-carousel/index.php");}
 ?>
-
 
 
 

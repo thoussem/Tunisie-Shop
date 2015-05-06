@@ -5,14 +5,8 @@
 <head>
 	<?php
 		include("lock.php");
-		
 	?>
 
-
-
-
-
-	
 	<meta charset="UTF-8" />
 	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -192,9 +186,9 @@
 			<div class="col-xs-12 clearfix">
 				<div class="top row">
 					
-								<div class="col-sm-8 logo image">
-								<a href="index.php" title="HumbleShop" rel="home">
-  									<img src="../wp-content/uploads/2013/01/highreslogo-300x75.png"  alt="" class="img-responsive" />
+													<div class="col-sm-8 logo image">
+								<a href="../index.html" title="HumbleShop" rel="home">
+  									<img src="../wp-content/uploads/2013/01/highreslogo-300x75.png" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/retina1.png" alt="" class="img-responsive" />
   								</a>
   							</div>
 											
@@ -221,40 +215,30 @@
 		<div class="row">		
 			<div class="col-12">
 				<nav class="horizontal-nav full-width">
-					<ul id="nav" class="nav hidden-xs">
-						<li id="menu-item-218" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-218">
-						<a href="index.php">Acceuil</a>
-
-						</li>
-<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25">
-	<a href="../shop/index.php">BOUTIQUE</a>
+					<ul id="nav" class="nav hidden-xs"><li id="menu-item-218" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-218"><a href="index.php">Acceuil</a>
 <ul class="nav">
-	<li id="menu-item-482" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-482">
-		<a href="../wide-shop/index.html">Wide Shop</a></li>
-	<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-206">
-		<a href="../shop/red-garage/index.html">Product</a></li>
+	<li id="menu-item-217" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-214 current_page_item menu-item-217"><a href="index.php">Homepage Carousel</a></li>
 </ul>
 </li>
-<li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-16">
-	<a href= "../my-account/index.php">MON COMPTE</a>
+<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25"><a href="../shop/index.php">BOUTIQUE</a>
 <ul class="nav">
-	<li id="menu-item-489" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-489">
-		<a href="../checkout/index.html">Checkout</a></li>
-	<li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24">
-		<a href="../cart/index.html">Chariot</a></li>
+	<li id="menu-item-482" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-482"><a href="../wide-shop/index.html">Wide Shop</a></li>
+	<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-206"><a href="../shop/red-garage/index.html">Product</a></li>
 </ul>
 </li>
-<li id="menu-item-194" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-194">
-	<a href="../page-left-sidebar/index.html">Page</a>
+<li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-16"><a href="../my-account/index.php">MON COMPTE</a>
 <ul class="nav">
-	<li id="menu-item-195" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-195">
-		<a href="../page-right-sidebar/index.html">Page Right Sidebar</a></li>
+	<li id="menu-item-489" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-489"><a href="../checkout/index.html">Checkout</a></li>
+	<li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24"><a href="../cart/index.html">Chariot</a></li>
 </ul>
 </li>
-<li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45">
-	<a href="../blog/index.html">Blog</a></li>
-<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44">
-	<a href="../contact-us/index.html">Contact</a></li>
+<li id="menu-item-194" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-194"><a href="../page-left-sidebar/index.html">Page</a>
+<ul class="nav">
+	<li id="menu-item-195" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-195"><a href="../page-right-sidebar/index.html">Page Right Sidebar</a></li>
+</ul>
+</li>
+<li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="../blog/index.html">Blog</a></li>
+<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="../contact-us/index.html">Contact</a></li>
 </ul>				</nav>
 			</div>
 		</div>
