@@ -26,22 +26,7 @@ public function __construct($DB)
 		unset($_SESSION['panier'][$produit_id]);
 	}
 
-	public function total()
-	{	
-		$total = 0
-		$ids=array_keys($_SESSION['panier']);
-				if(empty($ids))
-					{
-						$produits=array();
-					}
-				else
-						{$produits=$this->DB->query('SELECT id,prix FROM produits WHERE id IN ('.implode(',',$ids).')'); }
-		
-		foreach ($produits as $produit ) {
-			$total += $produit->prix;
-		}
-		return $total;
-	}
+	
 }
 
 ?>
