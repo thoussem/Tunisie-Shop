@@ -1,3 +1,12 @@
+<!-- connexion a la base -->
+<!-- & ouverture d'une session pr le panier-->
+<?php
+             include("conf.php");
+             include("panier.php");
+             $DB= new DB();
+             $panier=new panier($DB);
+             
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -6,12 +15,6 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
 	
-	<!--connexion a la base -->
-	<?php
-             include("conf.php");
-             $DB= new DB();
-    ?>
-
 
 	<meta charset="UTF-8" />
 	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
@@ -127,12 +130,12 @@
 
 <body class="page page-id-479 page-template page-template-page-full page-template-page-full-php wf-active">
 
-	
-	
+
 	<!-- ====== -->
 	<!-- TOPBAR -->
 	<!-- ====== -->
 	<div class="container welcome">
+
 		<div class="row">
 			<div class="pull-left greet">
 				<span class="hidden-xs">Welcome</span> 					<span class="hidden-xs">shopper,</span> <a href="../my-account/index.html">login or register</a>
@@ -200,6 +203,7 @@
 	<!-- ================ -->
 	
 	<nav class="container">
+		
 		<div class="row">		
 			<div class="col-12">
 				<nav class="horizontal-nav full-width">
@@ -254,297 +258,38 @@
 							<div class="woocommerce columns-4">
 			<div id="products" class="products row">
 				
-					<article class="product col-sm-4"> 
-		<div class="view view-thumb">
-		
-		<!-- Sale -->
-		
-				<!-- Thumbnail -->
-						<img src="../wp-content/uploads/2013/01/339640_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/339640_mrp_in_l.jpeg" alt="Sample Herschel&#8217;s"/>
-							<div class="mask">
-			<h2 class="maskprice">
-				<span class="amount">&pound;25.00</span>&ndash;<span class="amount">&pound;100.00</span>			</h2>
-			<form class="cart" method="post" enctype='multipart/form-data'>
-				<p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligu..</p>				<a href="../shop/sample-herschels/index.html" rel="nofollow" data-product_id="250" class="btn btn-sm add_to_cart_button product_type_variable custom">Select</a>	
-							</form>
-		</div>
-	</div>
-	<p class="product-title">
-		<a href="../shop/sample-herschels/index.html">Sample Herschel&#8217;s</a>
-			</p>
+					<!-- recuperation des prod $$$$$$$ -->
+					<?php $produits=$DB->query('SELECT * FROM produits;') ?>
+					<?php foreach ($produits as $produit): ?>
 
-</article>
-				
+					
 					<article class="product col-sm-4"> 
 		<div class="view view-thumb">
 		
 		<!-- Sale -->
 		
 				<!-- Thumbnail -->
-						<img src="../wp-content/uploads/2013/01/197762_mrp_in_l1.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/197762_mrp_in_l1.jpeg" alt="Radiohead Pocket"/>
+						 <img src="../wp-content/uploads/2013/01/<?= $produit->id; ?>.jpg" alt="Radiohead Pocket"/>
 							<div class="mask">
 			<h2 class="maskprice">
-				<span class="amount">&pound;99.00</span>			</h2>
+				<span class="amount">&euro;<?= number_format($produit->prix,3,',',' ') ; ?></span>			</h2>
 			<form class="cart" method="post" enctype='multipart/form-data'>
 				<p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl t..</p>										
 						<a href="../shop/radiohead-pocket/index.html" class="btn btn-sm custom">View</a> 
 						<input type="hidden" name="add-to-cart" value="120" />
-						<button type="submit" class="btn btn-sm alt custom">Buy</button>
+						<a href="addpanier.php?id=<?= $produit->id; ?>" class="btn btn-sm custom">Buy</a> 
 					
 						
 							</form>
 		</div>
 	</div>
+	
 	<p class="product-title">
-		<a href="../shop/radiohead-pocket/index.html">Radiohead Pocket</a>
+		<a href="../shop/radiohead-pocket/index.html"><?= $produit->nom ; ?></a>
 			</p>
 
 </article>
-				
-					<article class="product col-sm-4"> 
-		<div class="view view-thumb">
-		
-		<!-- Sale -->
-		
-				<!-- Thumbnail -->
-						<img src="../wp-content/uploads/2013/01/329574_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/329574_mrp_in_l.jpeg" alt="Toms Peace Polo"/>
-							<div class="mask">
-			<h2 class="maskprice">
-				<span class="amount">&pound;56.00</span>			</h2>
-			<form class="cart" method="post" enctype='multipart/form-data'>
-				<p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl t..</p>									<a href="../shop/toms-peace-polo/index.html" class="btn btn-sm custom">Read More</a>
-							</form>
-		</div>
-	</div>
-	<p class="product-title">
-		<a href="../shop/toms-peace-polo/index.html">Toms Peace Polo</a>
-			</p>
-
-</article>
-				
-					<article class="product col-sm-4"> 
-		<div class="view view-thumb">
-		
-		<!-- Sale -->
-					<span class="onsale">SALE</span>		
-				<!-- Thumbnail -->
-						<img src="../wp-content/uploads/2013/01/340809_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/340809_mrp_in_l.jpeg" alt="Cafe Racer Jacket"/>
-							<div class="mask">
-			<h2 class="maskprice">
-				<del><span class="amount">&pound;389.00</span></del> <ins><span class="amount">&pound;355.00</span></ins>			</h2>
-			<form class="cart" method="post" enctype='multipart/form-data'>
-				<p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl t..</p>										
-						<a href="../shop/cafe-racer-jacket/index.html" class="btn btn-sm custom">View</a> 
-						<input type="hidden" name="add-to-cart" value="113" />
-						<button type="submit" class="btn btn-sm alt custom">Buy</button>
-					
-						
-							</form>
-		</div>
-	</div>
-	<p class="product-title">
-		<a href="../shop/cafe-racer-jacket/index.html">Cafe Racer Jacket</a>
-			</p>
-
-</article>
-				
-					<article class="product col-sm-4"> 
-		<div class="view view-thumb">
-		
-		<!-- Sale -->
-		
-				<!-- Thumbnail -->
-						<img src="../wp-content/uploads/2013/01/196623_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/196623_mrp_in_l.jpeg" alt="Rough Sunset Jacket"/>
-							<div class="mask">
-			<h2 class="maskprice">
-				<span class="amount">&pound;123.00</span>			</h2>
-			<form class="cart" method="post" enctype='multipart/form-data'>
-				<p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl t..</p>										
-						<a href="../shop/rough-sunset-jacket/index.html" class="btn btn-sm custom">View</a> 
-						<input type="hidden" name="add-to-cart" value="110" />
-						<button type="submit" class="btn btn-sm alt custom">Buy</button>
-					
-						
-							</form>
-		</div>
-	</div>
-	<p class="product-title">
-		<a href="../shop/rough-sunset-jacket/index.html">Rough Sunset Jacket</a>
-			</p>
-
-</article>
-				
-					<article class="product col-sm-4"> 
-		<div class="view view-thumb">
-		
-		<!-- Sale -->
-		
-				<!-- Thumbnail -->
-						<img src="../wp-content/uploads/2013/01/340333_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/340333_mrp_in_l.jpeg" alt="Blues Denim"/>
-							<div class="mask">
-			<h2 class="maskprice">
-				<span class="amount">&pound;199.00</span>			</h2>
-			<form class="cart" method="post" enctype='multipart/form-data'>
-				<p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus..</p>										
-						<a href="../shop/blues-denim/index.html" class="btn btn-sm custom">View</a> 
-						<input type="hidden" name="add-to-cart" value="107" />
-						<button type="submit" class="btn btn-sm alt custom">Buy</button>
-					
-						
-							</form>
-		</div>
-	</div>
-	<p class="product-title">
-		<a href="../shop/blues-denim/index.html">Blues Denim</a>
-			</p>
-
-</article>
-				
-					<article class="product col-sm-4"> 
-		<div class="view view-thumb">
-		
-		<!-- Sale -->
-					<span class="onsale">SALE</span>		
-				<!-- Thumbnail -->
-						<img src="../wp-content/uploads/2013/01/339640_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/339640_mrp_in_l.jpeg" alt="Striped Shirt"/>
-							<div class="mask">
-			<h2 class="maskprice">
-				<del><span class="amount">&pound;77.00</span></del> <ins><span class="amount">&pound;65.00</span></ins>			</h2>
-			<form class="cart" method="post" enctype='multipart/form-data'>
-				<p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl t..</p>										
-						<a href="../shop/striped-shirt/index.html" class="btn btn-sm custom">View</a> 
-						<input type="hidden" name="add-to-cart" value="104" />
-						<button type="submit" class="btn btn-sm alt custom">Buy</button>
-					
-						
-							</form>
-		</div>
-	</div>
-	<p class="product-title">
-		<a href="../shop/striped-shirt/index.html">Striped Shirt</a>
-			</p>
-
-</article>
-				
-					<article class="product col-sm-4"> 
-		<div class="view view-thumb">
-		
-		<!-- Sale -->
-		
-				<!-- Thumbnail -->
-						<img src="../wp-content/uploads/2013/01/340332_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/340332_mrp_in_l.jpeg" alt="Red Garage"/>
-							<div class="mask">
-			<h2 class="maskprice">
-				<span class="amount">&pound;83.00</span>			</h2>
-			<form class="cart" method="post" enctype='multipart/form-data'>
-				<p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl t..</p>										
-						<a href="../shop/red-garage/index.html" class="btn btn-sm custom">View</a> 
-						<input type="hidden" name="add-to-cart" value="99" />
-						<button type="submit" class="btn btn-sm alt custom">Buy</button>
-					
-						
-							</form>
-		</div>
-	</div>
-	<p class="product-title">
-		<a href="../shop/red-garage/index.html">Red Garage</a>
-			</p>
-
-</article>
-				
-					<article class="product col-sm-4"> 
-		<div class="view view-thumb">
-		
-		<!-- Sale -->
-					<span class="onsale">SALE</span>		
-				<!-- Thumbnail -->
-						<img src="../wp-content/uploads/2013/01/341243_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/341243_mrp_in_l.jpeg" alt="Ripped Jeans"/>
-							<div class="mask">
-			<h2 class="maskprice">
-				<span class="amount">&pound;133.00</span>&ndash;<span class="amount">&pound;169.00</span>			</h2>
-			<form class="cart" method="post" enctype='multipart/form-data'>
-				<p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl t..</p>				<a href="../shop/ripped-jeans/index.html" rel="nofollow" data-product_id="91" class="btn btn-sm add_to_cart_button product_type_variable custom">Select</a>	
-							</form>
-		</div>
-	</div>
-	<p class="product-title">
-		<a href="../shop/ripped-jeans/index.html">Ripped Jeans</a>
-			</p>
-
-</article>
-				
-					<article class="product col-sm-4"> 
-		<div class="view view-thumb">
-		
-		<!-- Sale -->
-					<span class="onsale">SALE</span>		
-				<!-- Thumbnail -->
-						<img src="../wp-content/uploads/2013/01/343841_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/343841_mrp_in_l.jpeg" alt="Moscot Crowbar"/>
-							<div class="mask">
-			<h2 class="maskprice">
-				<del><span class="amount">&pound;259.00</span></del> <ins><span class="amount">&pound;198.00</span></ins>			</h2>
-			<form class="cart" method="post" enctype='multipart/form-data'>
-				<p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligu..</p>										
-						<a href="../shop/moscot-crowbar/index.html" class="btn btn-sm custom">View</a> 
-						<input type="hidden" name="add-to-cart" value="87" />
-						<button type="submit" class="btn btn-sm alt custom">Buy</button>
-					
-						
-							</form>
-		</div>
-	</div>
-	<p class="product-title">
-		<a href="../shop/moscot-crowbar/index.html">Moscot Crowbar</a>
-			</p>
-
-</article>
-				
-					<article class="product col-sm-4"> 
-		<div class="view view-thumb">
-		
-		<!-- Sale -->
-		
-				<!-- Thumbnail -->
-						<img src="../wp-content/uploads/2013/01/328427_mrp_e1_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/328427_mrp_e1_l.jpeg" alt="Mahogany Footprint"/>
-							<div class="mask">
-			<h2 class="maskprice">
-				<span class="amount">&pound;79.00</span>			</h2>
-			<form class="cart" method="post" enctype='multipart/form-data'>
-				<p>Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas p..</p>										
-						<a href="../shop/mahogany-footprint/index.html" class="btn btn-sm custom">View</a> 
-						<input type="hidden" name="add-to-cart" value="83" />
-						<button type="submit" class="btn btn-sm alt custom">Buy</button>
-					
-						
-							</form>
-		</div>
-	</div>
-	<p class="product-title">
-		<a href="../shop/mahogany-footprint/index.html">Mahogany Footprint</a>
-			</p>
-
-</article>
-				
-					<article class="product col-sm-4"> 
-		<div class="view view-thumb">
-		
-		<!-- Sale -->
-					<span class="onsale">SALE</span>		
-				<!-- Thumbnail -->
-						<img src="../wp-content/uploads/2013/01/311772_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/311772_mrp_in_l.jpeg" alt="Leather Sling Track"/>
-							<div class="mask">
-			<h2 class="maskprice">
-				<del><span class="amount">&pound;112.00</span>&ndash;<span class="amount">&pound;150.00</span></del> <ins><span class="amount">&pound;109.00</span>&ndash;<span class="amount">&pound;115.00</span></ins>			</h2>
-			<form class="cart" method="post" enctype='multipart/form-data'>
-				<p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl t..</p>				<a href="../shop/leather-sling-track/index.html" rel="nofollow" data-product_id="80" class="btn btn-sm add_to_cart_button product_type_variable custom">Select</a>	
-							</form>
-		</div>
-	</div>
-	<p class="product-title">
-		<a href="../shop/leather-sling-track/index.html">Leather Sling Track</a>
-			</p>
-
-</article>
+<?php endForeach ?>
 				
 			</div>
 		</div>
