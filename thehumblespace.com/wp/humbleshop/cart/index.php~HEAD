@@ -1,3 +1,12 @@
+<?php
+             include("conf.php");
+             include("panier.php");
+             $DB= new DB();
+             $panier= new panier($DB);
+?>
+<?php if (isset($_GET['del']))
+	{$panier->del($_GET['del']);}
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -122,6 +131,7 @@
 	<!-- TOPBAR -->
 	<!-- ====== -->
 	<div class="container welcome">
+
 		<div class="row">
 			<div class="pull-left greet">
 				<span class="hidden-xs">Welcome</span> 					<span class="hidden-xs">shopper,</span> <a href="../my-account/index.html">login or register</a>
@@ -230,6 +240,43 @@
 		<div class="row">
 			<header class="col-xs-12 prime">
 				<h3>Chariot</h3>
+				<div classe="table">
+					<div class="wrap">
+
+						<div class="rowtitle">
+							<span class="nom">Nom du produit</span>
+							<span class="prix">Prix</span>
+							<span class="qte">Quantité</span>
+							<span class="total">Total</span>
+							<span class="action">Actions</span>
+						</div>
+
+						<?php 
+						$ids=array_keys($_SESSION['panier']);
+						if(empty($ids))
+						{
+							$produits=array();
+						}
+						else
+						{$produits=$DB->query('SELECT * FROM produits WHERE id IN ('.implode(',',$ids).')'); }
+						foreach ($produits as $produit) : ?>
+						 
+
+						<div class="row">
+							<a href="#" class="img"><img src="../wp-content/uploads/2013/01/<?= $produit->id; ?>.jpg" width=10% height=10%></a>
+							<span class="nom"><?= $produit->nom ; ?></span>
+							<span class="prix">&euro;<?= number_format($produit->prix,3,',',' ') ; ?></span>
+							<span class="qte"><?= $_SESSION['panier'][$produit->id]; ?></span>
+							<span class="total">Total</span>
+							<span class="action">
+							<a href="panier.php?del= <?= $produit->id; ?>" class="del"><img src="../wp-content/uploads/2013/01/p.jpg" width=3% height=3%></a>
+							</span>
+							<span>&euro;</span>
+						</div>
+					<?php endForeach; ?>
+					</div>
+				</div>
+
 			</header>
 		</div>
 

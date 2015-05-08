@@ -1,7 +1,7 @@
 <?php
 include('conf.php');
 session_start();
-if(isset($_SESSION['login_user']) OR isset($_COOKIE['auth'])){
+if(isset($_SESSION['login_user']) ){
 	if(isset($_SESSION['login_user']))
 	{$verif_user=$_SESSION['login_user'];}
 	else
@@ -16,5 +16,5 @@ $nom=$row['nom'];
 $prenom=$row['prenom'];
 setcookie('auth',$login_session,time()+3600*24*3);
 }
-
+/* OR isset($_COOKIE['auth']) */
 ?>
