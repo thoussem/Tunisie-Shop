@@ -123,7 +123,7 @@ var humbleshop = {
     }); 
   },
   map : function(color, icon) {
-    var map, humbleloc = new google.maps.LatLng(-34.397, 150.644), MY_MAPTYPE_ID = 'humble_style', geocoder = new google.maps.Geocoder();
+    var map, humbleloc = new google.maps.LatLng(36.855822, 10.207952), MY_MAPTYPE_ID = 'humble_style', geocoder = new google.maps.Geocoder();
     
     var featureOpts = [
     
@@ -153,7 +153,7 @@ var humbleshop = {
         draggable: drag,
         disableDoubleClickZoom: true,
         disableDefaultUI: false,
-        zoom: 15,
+        zoom: 18,
         center: humbleloc,
         mapTypeControlOptions: {
             mapTypeIds: [google.maps.MapTypeId.TERRAIN, MY_MAPTYPE_ID]
@@ -175,7 +175,7 @@ var humbleshop = {
         //iconBase = 'https://maps.google.com/mapfiles/kml/shapes/',
         myBase = {
             url: icon,
-            anchor: new google.maps.Point(16, 34)
+            anchor: new google.maps.Point(36.855822, 10.207952)
         };
 
     geocoder.geocode( { 'address': address}, function(results, status) {

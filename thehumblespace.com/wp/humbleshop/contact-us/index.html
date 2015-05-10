@@ -4,6 +4,13 @@
 <!-- Mirrored from thehumblespace.com/wp/humbleshop/contact-us/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Apr 2015 22:18:19 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
+
+		
+		<?php
+		include("lock.php");
+		?>
+
+
 	<meta charset="UTF-8" />
 	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -125,13 +132,35 @@
 	<div class="container welcome">
 		<div class="row">
 			<div class="pull-left greet">
-				<span class="hidden-xs">Welcome</span> 					<span class="hidden-xs">shopper,</span> <a href="../my-account/index.html">login or register</a>
+				<span class="hidden-xs">Bienvenue</span> 					
+				<span class="hidden-xs">client,</span> 
+				<a href="../my-account/index.php">
+				<?php
+					if (isset($login_session)){
+						echo $nom.' '.$prenom;
+					}
+					else {echo 'Connexion ou Créer un compte';}
+				?>
+			</a>
+
+				&nbsp;&nbsp;
+				
+				<a href="logout.php">
+					<?php
+					if (isset($login_session)){
+						echo "(Déconnexion)";}
+					?>
+				</a>
+
+
 							</div>
 			<div class="pull-right hscart text-right">
 				
 				<!-- Cart Updates -->
 				<div class="counter">
-					<a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Totals</span> </a> : <span class="theme"><span class="amount">&pound;0.00</span></span>
+					<a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>
+					 <span class="hidden-xs">Total</span> </a> : 
+					 <span class="theme"><span class="amount">0.00 DT</span></span>
 				</div>
 				
 				<!-- Bubble Cart Item -->
@@ -142,8 +171,8 @@
 						
 						
 						<div class="clearfix text-center">
-							No products in the cart. <br>
-							<a href="javascript:void(0)" id="closeit">Close</a>
+							Aucun produit dans le panier. <br>
+							<a href="javascript:void(0)" id="closeit">Fermer</a>
 						</div>
 
 						
@@ -153,7 +182,6 @@
 			</div>
 		</div>	
 	</div>
-	
 	
 	<!-- ================= -->
 	<!-- HEADER & BRANDING -->
@@ -193,21 +221,21 @@
 		<div class="row">		
 			<div class="col-12">
 				<nav class="horizontal-nav full-width">
-					<ul id="nav" class="nav hidden-xs"><li id="menu-item-218" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-218"><a href="../index.html">Home</a>
+					<ul id="nav" class="nav hidden-xs"><li id="menu-item-218" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-218"><a href="index.php">Acceuil</a>
 <ul class="nav">
-	<li id="menu-item-217" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-217"><a href="../homepage-with-carousel/index.html">Homepage Carousel</a></li>
+	<li id="menu-item-217" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-214 current_page_item menu-item-217"><a href="index.php">Homepage Carousel</a></li>
 </ul>
 </li>
-<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25"><a href="../shop/index.html">Shop</a>
+<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25"><a href="../shop/index.php">BOUTIQUE</a>
 <ul class="nav">
 	<li id="menu-item-482" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-482"><a href="../wide-shop/index.html">Wide Shop</a></li>
 	<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-206"><a href="../shop/red-garage/index.html">Product</a></li>
 </ul>
 </li>
-<li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-16"><a href="../my-account/index.html">My Account</a>
+<li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-16"><a href="../my-account/index.php">MON COMPTE</a>
 <ul class="nav">
-	<li id="menu-item-489" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-489"><a href="../checkout/index.html">Checkout</a></li>
-	<li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24"><a href="../cart/index.html">Cart</a></li>
+	<li id="menu-item-489" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-489"><a href="../checkout/index.php">Checkout</a></li>
+	<li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24"><a href="../cart/index.php">Chariot</a></li>
 </ul>
 </li>
 <li id="menu-item-194" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-194"><a href="../page-left-sidebar/index.html">Page</a>
@@ -216,11 +244,13 @@
 </ul>
 </li>
 <li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="../blog/index.html">Blog</a></li>
-<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-42 current_page_item menu-item-44"><a href="index.html">Contact</a></li>
+<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="../contact-us/index.html">Contact</a></li>
 </ul>				</nav>
 			</div>
 		</div>
 	</nav>
+
+
 <div class="container">
 	<section class="page">
 		
@@ -239,21 +269,21 @@
 						<address class="row ">
 							<div class="col-xs-2"><i class="fa fa-map-marker"></i></div>
 							<div class="col-xs-10">
-							69-135 Brompton Road<br />Knightsbridge<br />SW1X 0NA<br />United Kingdom‎							</div>
+							45 Rue des Entrepreneurs<br />Charguia2<br />Tunis<br />
 						</address>
 													<address class="row ">
 								<div class="col-xs-2"><i class="fa fa-phone"></i></div>
-								<div class="col-xs-10">+44 55566888</div>
+								<div class="col-xs-10">+216 71222222</div>
 							</address>
 						
 													<address class="row ">
 								<div class="col-xs-2"><i class="fa fa-print"></i></div>
-								<div class="col-xs-10">+44 55566999</div>
+								<div class="col-xs-10">+216 71222222</div>
 							</address>
 						
 													<address class="row ">
 								<div class="col-xs-2"><i class="fa fa-envelope-o"></i></div>
-								<div class="col-xs-10"><a href="mailto:hello@humbleshop.com">hello@humbleshop.com</a></div>
+								<div class="col-xs-10"><a href="mailto:hello@humbleshop.com">tunisieShop2015@gmail.com</a></div>
 							</address>
 											</div>
 				</div>
@@ -275,7 +305,7 @@
 </div>
 <div class="row">
 <div class="col-sm-4">
-<label>Name</label><br />
+<label>Nom</label><br />
 <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" /></span>
 </div>
 <div class="col-sm-4">
@@ -283,7 +313,7 @@
 <span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email form-control" aria-required="true" aria-invalid="false" /></span>
 </div>
 <div class="col-sm-4">
-<label>Subject</label><br />
+<label>Objet</label><br />
 <span class="wpcf7-form-control-wrap your-subject"><input type="text" name="your-subject" value="" size="40" class="wpcf7-form-control wpcf7-text form-control" aria-invalid="false" /></span>
 </div>
 </div>
@@ -291,7 +321,7 @@
 <label>Message</label><br />
 <span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea form-control" aria-invalid="false"></textarea></span>
 </p>
-<p><input type="submit" value="Send" class="wpcf7-form-control wpcf7-submit btn btn-default" /></p>
+<p><input type="submit" value="Evoyer" class="wpcf7-form-control wpcf7-submit btn btn-default" /></p>
 </div>
 <div class="wpcf7-response-output wpcf7-display-none"></div></form></div>
 						</div>
