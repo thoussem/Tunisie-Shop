@@ -229,7 +229,7 @@
 		
 		<div class="row">
 			<header class="col-xs-12 prime">
-				<h3>Chariot</h3>
+				<h3>Mon Compte</h3>
 			</header>
 		</div>
 
@@ -241,10 +241,154 @@
 					
 						<div class="content clearfix">
 							<div class="woocommerce">
-<p class="cart-empty">Your cart is currently empty.</p>
 
 
-<p class="return-to-shop"><a class="button wc-backward" href="../shop/index.html">Return To Shop</a></p>
+			<?php if(!empty($success)): ?>
+			<ul class="woocommerce-error alert list-unstyled alert-success">
+			<li><strong>SUCCESS</strong>: <?php echo $success ;?> 
+			</li>
+			</ul>
+			<?php endif; ?>
+
+			<?php if(!empty($error)): ?>
+			<ul class="woocommerce-error alert list-unstyled alert-danger">
+			<li><strong>ERREUR</strong>: <?php echo $error ;?> 
+			<a href="lost-password/">Mot de passe oublier?</a></li>
+			</ul>
+			<?php endif; ?>
+
+			<?php if(!empty($pass_error)): ?>
+			<ul class="woocommerce-error alert list-unstyled alert-danger">
+			<li><strong>ERREUR</strong>: <?php echo $pass_error ;?> 
+			</li>
+			</ul>
+			<?php endif; ?>
+
+			<?php if(!empty($user_error)): ?>
+			<ul class="woocommerce-error alert list-unstyled alert-danger">
+			<li><strong>ERREUR</strong>: <?php echo $user_error ;?> 
+			</li>
+			</ul>
+			<?php endif; ?>
+
+
+
+
+<div class="col2-set row" id="customer_login">
+
+	<div class="col-1 col-sm-6">
+
+		<h5>SE connecter</h5>
+
+		<form method="post" action="" class="login" name="connect">
+
+			<p class="form-group form-row-wide" style="color:red">
+				<label></label>
+			</p>
+			<p class="form-group form-row-wide">
+				<label for="username">Nom d'utilisateur ou adresse e-mail <span class="required">*</span></label>
+				<input type="text" class="input-text form-control" name="username" id="username" value=<?php echo "\"$username\"" ;?> />
+			</p>
+			<p class="form-group form-row-wide">
+				<label for="password">Mot de passe <span class="required">*</span></label>
+				<input class="input-text form-control" type="password" name="password" id="password" />
+			</p>
+
+			
+			<p class="form-row">
+				<input type="hidden" id="_wpnonce" name="_wpnonce" value="d3dd4ec73f" />
+				<input type="hidden" name="_wp_http_referer" value="/wp/humbleshop/my-account/" />	
+				<input type="submit" class="btn btn-default theme" name="seconnecter" value="Se connecter" /> 
+				<label for="rememberme" class="inline">
+				<input name="rememberme" type="checkbox" id="rememberme" value="forever"/> Rester identifié</label>
+			</p>
+			<p class="lost_password">
+				<a href="lost-password/index.html">Mot de passe oublier?</a>
+			</p>
+
+		
+			<label style="color:red">* Requis</span></label>
+
+			
+		</form>
+
+
+	</div>
+
+	<?php if(empty($success)): ?>
+	<div class="col-2 col-sm-6">
+
+		<h5>Enregistrer</h5>
+
+		<form method="post" class="register" action="" name="reg">
+			<p class="form-group form-row-wide" style="color:red">
+				
+			</p>
+			<p class="form-group form-row-wide">
+				<label for="reg_username">Nom d'utilisateur <span class="required">*</span></label>
+				<input type="text" class="input-text form-control" required  name="reg_username" id="reg_username" value=<?php echo "\"$reg_username\"" ;?> />
+			</p>
+            
+            <p class="form-group form-row-wide">
+				<label for="reg_titre">Titre <span class="required">*</span></label>
+				<select class="input-text form-control" required name="reg_titre" id="reg_titre">
+				<option value="" selected="selected">Sélectionner</option>
+				<option value="mr">Monsieur</option>
+				<option value="mm">Madame</option>
+				<option value="mlle">Mademoiselle</option>
+				</select>
+			</p>
+			
+			<p class="form-group form-row-wide">
+				<label for="reg_email">Adresse e-mail <span class="required">*</span></label>
+				<input type="email" class="input-text form-control" required name="reg_email" id="reg_email" value=<?php echo "\"$email\"" ;?> />
+			</p>
+            
+            <p class="form-group form-row-wide">
+				<label for="reg_pre">Prénom <span class="required">*</span></label>
+				<input type="text" class="input-text form-control" required name="reg_pre" id="reg_pre" value=<?php echo "\"$pre\"" ;?> />
+			</p>
+            
+            <p class="form-group form-row-wide">
+				<label for="reg_nom">Nom <span class="required">*</span></label>
+				<input type="text" class="input-text form-control" required name="reg_nom" id="reg_nom" value=<?php echo "\"$nom\"" ;?> />
+			</p>
+
+			<p class="form-group form-row-wide">
+				<label for="reg_password1">Mot de passe <span class="required">*</span></label>
+				<input type="password" class="input-text form-control" required name="reg_password1" id="reg_password1" placeholder="6 caractaires Min" minlength="6"/>
+			</p>
+            
+            <p class="form-group form-row-wide">
+				<label for="reg_password2">Saisissez à nouveau le mot de passe <span class="required">*</span></label>
+				<input type="password" class="input-text form-control" required name="reg_password2" id="reg_password2" placeholder="6 caractaires Min" minlength="6"/>
+			</p>
+            
+            <p class="form-group form-row-wide">
+            
+            
+
+			<!-- Spam Trap -->
+			<div style="left: -999em; position: absolute;">
+				<label for="trap">Anti-spam</label>
+				<input type="text" name="email_2" id="trap" tabindex="-1" />
+			</div>
+
+						
+			<p class="form-row">
+				<input type="hidden" id="_wpnonce" name="_wpnonce" value="53641f801f" />
+				<input type="hidden" name="_wp_http_referer" value="/wp/humbleshop/my-account/" />				
+				<input type="submit" class="btn btn-default theme" name="sinscrire" value="S'inscrire" />
+			</p>
+
+			
+		</form>
+
+	</div>
+	<?php endif; ?>
+
+</div>
+
 </div>
 						</div>
 												
