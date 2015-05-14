@@ -9,8 +9,8 @@
 	include("lock.php");
 	if(isset($_GET["id"])){
 		$id=$_GET["id"];
-		$ses_sql=mysqli_query($conn,"SELECT * FROM `articles` WHERE id='$id';");
-		$row=mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);}
+		$article_sql=mysqli_query($conn,"SELECT * FROM `articles` WHERE id='$id';");
+		$row=mysqli_fetch_array($article_sql,MYSQLI_ASSOC);}
 
 
 
@@ -235,7 +235,7 @@
     									<li id="menu-item-217" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-214 current_page_item menu-item-217"><a href="index.php">Homepage Carousel</a></li>
     								</ul>
     							</li>
-    							<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25"><a href="../shop/index.php">BOUTIQUE</a>
+    							<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25"><a href="../index.php">BOUTIQUE</a>
     								<ul class="nav">
     									<li id="menu-item-482" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-482"><a href="../wide-shop/index.html">Wide Shop</a></li>
     									<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-206"><a href="../shop/red-garage/index.html">Product</a></li>
@@ -287,332 +287,329 @@
     												<img width="455" height="475" src="../../wp-content/uploads/2013/01/<?php echo $row['srcimg']; ?>" class="attachment-shop_single wp-post-image" alt="Sample" title="Sample" data-at2x="../../wp-content/uploads/2013/01/328390_mrp_in_l.jpg" /></a>
     												<div class="thumbnails flexslider" id="flexcarousel-product">
     													<ul class="slides">
-    														<li>
-    															<a href="../../wp-content/uploads/2013/01/328390_mrp_fr_l.jpg" class="zoom first" title="Sample" data-rel="prettyPhoto[product-gallery]">
-    																<img width="455" height="475" src="../../wp-content/uploads/2013/01/328390_mrp_fr_l.jpg" class="attachment-shop_single" alt="Sample" />
-    															</a>
-    														</li>
-    														<li>
-    															<a href="../../wp-content/uploads/2013/01/327256_mrp_fr_l.jpg" class="zoom" title="Sample" data-rel="prettyPhoto[product-gallery]">
-    																<img width="455" height="475" src="../../wp-content/uploads/2013/01/327256_mrp_fr_l.jpg" class="attachment-shop_single" alt="Sample" />
-    															</a>
-    														</li>
-    														<li>
-    															<a href="../../wp-content/uploads/2013/01/327256_mrp_in_l.jpg" class="zoom last" title="Sample" data-rel="prettyPhoto[product-gallery]">
-    																<img width="455" height="475" src="../../wp-content/uploads/2013/01/327256_mrp_in_l.jpg" class="attachment-shop_single" alt="Sample" />
-    															</a>
-    														</li>
-    													</ul>
-    												</div>
-
-    											</div>
-
-    										</div>
-
-    										<div class="col-sm-7">
-
-    											<div class="details wrap">
-    												<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-
-    													<h4 itemprop="price" class="price"><i class="fa fa-tag"></i> 
-    														<ins><span class="amount">&pound;<?php echo $row['prix']?></span></ins>	</h4>		
-
-    														<meta itemprop="priceCurrency" content="GBP" />
-    														<meta itemprop="priceCurrency" content="GBP" />
-    														<link itemprop="availability" href="http://schema.org/InStock" />
-
-    													</div><?php echo $row['description']?><div itemprop="description">
-    													<p></p>
-    												</div>
-
-
-    												<form class="variations_form cart" method="post" enctype='multipart/form-data' data-product_id="65" data-product_variations="[{&quot;variation_id&quot;:73,&quot;variation_is_visible&quot;:true,&quot;variation_is_active&quot;:true,&quot;is_purchasable&quot;:true,&quot;display_price&quot;:57,&quot;display_regular_price&quot;:65,&quot;attributes&quot;:{&quot;attribute_pa_size&quot;:&quot;small&quot;,&quot;attribute_pa_color&quot;:&quot;blue&quot;},&quot;image_src&quot;:&quot;http:\/\/thehumblespace.com\/wp\/humbleshop\/wp-content\/uploads\/2013\/01\/340332_mrp_fr_l.jpeg&quot;,&quot;image_link&quot;:&quot;http:\/\/thehumblespace.com\/wp\/humbleshop\/wp-content\/uploads\/2013\/01\/340332_mrp_fr_l.jpeg&quot;,&quot;image_title&quot;:&quot;sample&quot;,&quot;image_alt&quot;:&quot;&quot;,&quot;price_html&quot;:&quot;&lt;span class=\&quot;price\&quot;&gt;&lt;del&gt;&lt;span class=\&quot;amount\&quot;&gt;&pound;65.00&lt;\/span&gt;&lt;\/del&gt; &lt;ins&gt;&lt;span class=\&quot;amount\&quot;&gt;&pound;57.00&lt;\/span&gt;&lt;\/ins&gt;&lt;\/span&gt;&quot;,&quot;availability_html&quot;:&quot;&lt;p class=\&quot;stock in-stock\&quot;&gt;Only 1 left in stock&lt;\/p&gt;&quot;,&quot;sku&quot;:&quot;&quot;,&quot;weight&quot;:&quot; kg&quot;,&quot;dimensions&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;max_qty&quot;:1,&quot;backorders_allowed&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_downloadable&quot;:false,&quot;is_virtual&quot;:false,&quot;is_sold_individually&quot;:&quot;no&quot;},{&quot;variation_id&quot;:74,&quot;variation_is_visible&quot;:true,&quot;variation_is_active&quot;:true,&quot;is_purchasable&quot;:true,&quot;display_price&quot;:56,&quot;display_regular_price&quot;:77,&quot;attributes&quot;:{&quot;attribute_pa_size&quot;:&quot;medium&quot;,&quot;attribute_pa_color&quot;:&quot;pink&quot;},&quot;image_src&quot;:&quot;http:\/\/thehumblespace.com\/wp\/humbleshop\/wp-content\/uploads\/2013\/01\/328390_mrp_fr_l.jpeg&quot;,&quot;image_link&quot;:&quot;http:\/\/thehumblespace.com\/wp\/humbleshop\/wp-content\/uploads\/2013\/01\/328390_mrp_fr_l.jpeg&quot;,&quot;image_title&quot;:&quot;Sample&quot;,&quot;image_alt&quot;:&quot;&quot;,&quot;price_html&quot;:&quot;&lt;span class=\&quot;price\&quot;&gt;&lt;del&gt;&lt;span class=\&quot;amount\&quot;&gt;&pound;77.00&lt;\/span&gt;&lt;\/del&gt; &lt;ins&gt;&lt;span class=\&quot;amount\&quot;&gt;&pound;56.00&lt;\/span&gt;&lt;\/ins&gt;&lt;\/span&gt;&quot;,&quot;availability_html&quot;:&quot;&lt;p class=\&quot;stock in-stock\&quot;&gt;In stock&lt;\/p&gt;&quot;,&quot;sku&quot;:&quot;&quot;,&quot;weight&quot;:&quot; kg&quot;,&quot;dimensions&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;max_qty&quot;:5,&quot;backorders_allowed&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_downloadable&quot;:false,&quot;is_virtual&quot;:false,&quot;is_sold_individually&quot;:&quot;no&quot;},{&quot;variation_id&quot;:75,&quot;variation_is_visible&quot;:true,&quot;variation_is_active&quot;:true,&quot;is_purchasable&quot;:true,&quot;display_price&quot;:44,&quot;display_regular_price&quot;:56,&quot;attributes&quot;:{&quot;attribute_pa_size&quot;:&quot;&quot;,&quot;attribute_pa_color&quot;:&quot;green&quot;},&quot;image_src&quot;:&quot;http:\/\/thehumblespace.com\/wp\/humbleshop\/wp-content\/uploads\/2013\/01\/194809_mrp_fr_l.jpeg&quot;,&quot;image_link&quot;:&quot;http:\/\/thehumblespace.com\/wp\/humbleshop\/wp-content\/uploads\/2013\/01\/194809_mrp_fr_l.jpeg&quot;,&quot;image_title&quot;:&quot;Sample&quot;,&quot;image_alt&quot;:&quot;&quot;,&quot;price_html&quot;:&quot;&lt;span class=\&quot;price\&quot;&gt;&lt;del&gt;&lt;span class=\&quot;amount\&quot;&gt;&pound;56.00&lt;\/span&gt;&lt;\/del&gt; &lt;ins&gt;&lt;span class=\&quot;amount\&quot;&gt;&pound;44.00&lt;\/span&gt;&lt;\/ins&gt;&lt;\/span&gt;&quot;,&quot;availability_html&quot;:&quot;&lt;p class=\&quot;stock out-of-stock\&quot;&gt;Out of stock&lt;\/p&gt;&quot;,&quot;sku&quot;:&quot;&quot;,&quot;weight&quot;:&quot; kg&quot;,&quot;dimensions&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;max_qty&quot;:0,&quot;backorders_allowed&quot;:false,&quot;is_in_stock&quot;:false,&quot;is_downloadable&quot;:false,&quot;is_virtual&quot;:false,&quot;is_sold_individually&quot;:&quot;no&quot;}]">
-    													<table class="variations table" cellspacing="0">
-    														<tbody>
-    															<tr>
-    																<td class="labels col-md-4"><label for="pa_size">Taille</label></td>
-    																<td class="value col-md-8">
-    																	<select class="form-control" id="pa_size" name="attribute_pa_size" data-attribute_name="attribute_pa_size">
-    																		<option value="">Choisir la taille&hellip;</option>
-    																		<option value="small"  selected='selected'>Small</option>
-    																		<option value="medium" >Medium</option>
-    																		<option value="large" >Large</option>
-    																		<option value="extra-large" >Extra Large</option>						
-    																	</select> 
-    																</td>
-    															</tr>
-    															<tr>
-    																<td class="labels col-md-4"><label for="pa_color">Couleur</label></td>
-    																<td class="value col-md-8">
-    																	<select class="form-control" id="pa_color" name="attribute_pa_color" data-attribute_name="attribute_pa_color">
-    																		<option value="">Choisir le couleur&hellip;</option>
-    																		<?php 
-    																		$ses_sql=mysqli_query($conn,"SELECT `couleur` FROM `couleurs` WHERE idarticle='$id';");
+                                                            <?php
+                                                                    $couleur_sql=mysqli_query($conn,"SELECT * FROM `couleurs` WHERE idarticle='$id';");
+                                                                    while($row2=mysqli_fetch_array($couleur_sql,MYSQLI_ASSOC)){
+                                                                        echo'
+                                                            <li>
+                                                            <a href="../../wp-content/uploads/2013/01/'.$row2['imgcouleur'].'" class="zoom first" title="Sample" data-rel="prettyPhoto[product-gallery]">
+                                                            <img width="455" height="475" src="../../wp-content/uploads/2013/01/'.$row2['imgcouleur'].'" class="attachment-shop_single" alt="Sample" />
+                                                            </a>
+                                                            </li>';
+                                                            }
 
-    																		while($row=mysqli_fetch_array($ses_sql,MYSQLI_ASSOC)){
-    																			echo '<option value="'.$row["couleur"].'" >'.$row["couleur"].'</option>';
-    																			
-    																		}
-    																		?>
-    																		
-    																	</select> 
-    																</td>
-    															</tr>
-    														</tbody>
-    													</table>
+                                                            ?>
+                                                        </ul>
+                                                    </div>
 
+                                                </div>
 
-    													<div class="single_variation_wrap" style="display:none;">
+                                            </div>
 
-    														<div class="row">
-    															<div class="single_variation col-sm-4"></div>	
-    															<div class="variations_button col-sm-8">
-    																<div class="row">
-    																	<div class="col-sm-6"><div class="quantity"><input type="number" step="1"   name="quantity" value="1" title="Qty" class="input-text qty text" size="4" /></div>
-    																</div>
-    																<div class="col-sm-6"><button type="submit" class="single_add_to_cart_button btn btn-default theme btn-block alt">Add to cart</button></div>	
-    															</div>
-    														</div>
-    														<div class="col-xs-12">
-    															<p class="text-center"><small><a class="reset_variations" href="#reset">Clear selection</a></small></p>				</div>
-    														</div>	
+                                            <div class="col-sm-7">
 
-    														<input type="hidden" name="add-to-cart" value="65" />
-    														<input type="hidden" name="product_id" value="65" />
-    														<input type="hidden" name="variation_id" class="variation_id" value="" />
+                                             <div class="details wrap">
+                                                <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+
+                                                   <h4 itemprop="price" class="price"><i class="fa fa-tag"></i> 
+                                                      <ins><span class="amount">&pound;<?php echo $row['prix']?></span></ins>	</h4>		
+
+                                                      <meta itemprop="priceCurrency" content="GBP" />
+                                                      <meta itemprop="priceCurrency" content="GBP" />
+                                                      <link itemprop="availability" href="http://schema.org/InStock" />
 
-    													</div>
+                                                  </div><?php echo $row['description']?><div itemprop="description">
+                                                  <p></p>
+                                              </div>
 
 
+                                              <form class="variations_form cart" method="post" enctype='multipart/form-data' data-product_id="65" data-product_variations="[{&quot;variation_id&quot;:73,&quot;variation_is_visible&quot;:true,&quot;variation_is_active&quot;:true,&quot;is_purchasable&quot;:true,&quot;display_price&quot;:57,&quot;display_regular_price&quot;:65,&quot;attributes&quot;:{&quot;attribute_pa_size&quot;:&quot;small&quot;,&quot;attribute_pa_color&quot;:&quot;blue&quot;},&quot;image_src&quot;:&quot;http:\/\/thehumblespace.com\/wp\/humbleshop\/wp-content\/uploads\/2013\/01\/340332_mrp_fr_l.jpeg&quot;,&quot;image_link&quot;:&quot;http:\/\/thehumblespace.com\/wp\/humbleshop\/wp-content\/uploads\/2013\/01\/340332_mrp_fr_l.jpeg&quot;,&quot;image_title&quot;:&quot;sample&quot;,&quot;image_alt&quot;:&quot;&quot;,&quot;price_html&quot;:&quot;&lt;span class=\&quot;price\&quot;&gt;&lt;del&gt;&lt;span class=\&quot;amount\&quot;&gt;&pound;65.00&lt;\/span&gt;&lt;\/del&gt; &lt;ins&gt;&lt;span class=\&quot;amount\&quot;&gt;&pound;57.00&lt;\/span&gt;&lt;\/ins&gt;&lt;\/span&gt;&quot;,&quot;availability_html&quot;:&quot;&lt;p class=\&quot;stock in-stock\&quot;&gt;Only 1 left in stock&lt;\/p&gt;&quot;,&quot;sku&quot;:&quot;&quot;,&quot;weight&quot;:&quot; kg&quot;,&quot;dimensions&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;max_qty&quot;:1,&quot;backorders_allowed&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_downloadable&quot;:false,&quot;is_virtual&quot;:false,&quot;is_sold_individually&quot;:&quot;no&quot;},{&quot;variation_id&quot;:74,&quot;variation_is_visible&quot;:true,&quot;variation_is_active&quot;:true,&quot;is_purchasable&quot;:true,&quot;display_price&quot;:56,&quot;display_regular_price&quot;:77,&quot;attributes&quot;:{&quot;attribute_pa_size&quot;:&quot;medium&quot;,&quot;attribute_pa_color&quot;:&quot;pink&quot;},&quot;image_src&quot;:&quot;http:\/\/thehumblespace.com\/wp\/humbleshop\/wp-content\/uploads\/2013\/01\/328390_mrp_fr_l.jpeg&quot;,&quot;image_link&quot;:&quot;http:\/\/thehumblespace.com\/wp\/humbleshop\/wp-content\/uploads\/2013\/01\/328390_mrp_fr_l.jpeg&quot;,&quot;image_title&quot;:&quot;Sample&quot;,&quot;image_alt&quot;:&quot;&quot;,&quot;price_html&quot;:&quot;&lt;span class=\&quot;price\&quot;&gt;&lt;del&gt;&lt;span class=\&quot;amount\&quot;&gt;&pound;77.00&lt;\/span&gt;&lt;\/del&gt; &lt;ins&gt;&lt;span class=\&quot;amount\&quot;&gt;&pound;56.00&lt;\/span&gt;&lt;\/ins&gt;&lt;\/span&gt;&quot;,&quot;availability_html&quot;:&quot;&lt;p class=\&quot;stock in-stock\&quot;&gt;In stock&lt;\/p&gt;&quot;,&quot;sku&quot;:&quot;&quot;,&quot;weight&quot;:&quot; kg&quot;,&quot;dimensions&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;max_qty&quot;:5,&quot;backorders_allowed&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_downloadable&quot;:false,&quot;is_virtual&quot;:false,&quot;is_sold_individually&quot;:&quot;no&quot;},{&quot;variation_id&quot;:75,&quot;variation_is_visible&quot;:true,&quot;variation_is_active&quot;:true,&quot;is_purchasable&quot;:true,&quot;display_price&quot;:44,&quot;display_regular_price&quot;:56,&quot;attributes&quot;:{&quot;attribute_pa_size&quot;:&quot;&quot;,&quot;attribute_pa_color&quot;:&quot;green&quot;},&quot;image_src&quot;:&quot;http:\/\/thehumblespace.com\/wp\/humbleshop\/wp-content\/uploads\/2013\/01\/194809_mrp_fr_l.jpeg&quot;,&quot;image_link&quot;:&quot;http:\/\/thehumblespace.com\/wp\/humbleshop\/wp-content\/uploads\/2013\/01\/194809_mrp_fr_l.jpeg&quot;,&quot;image_title&quot;:&quot;Sample&quot;,&quot;image_alt&quot;:&quot;&quot;,&quot;price_html&quot;:&quot;&lt;span class=\&quot;price\&quot;&gt;&lt;del&gt;&lt;span class=\&quot;amount\&quot;&gt;&pound;56.00&lt;\/span&gt;&lt;\/del&gt; &lt;ins&gt;&lt;span class=\&quot;amount\&quot;&gt;&pound;44.00&lt;\/span&gt;&lt;\/ins&gt;&lt;\/span&gt;&quot;,&quot;availability_html&quot;:&quot;&lt;p class=\&quot;stock out-of-stock\&quot;&gt;Out of stock&lt;\/p&gt;&quot;,&quot;sku&quot;:&quot;&quot;,&quot;weight&quot;:&quot; kg&quot;,&quot;dimensions&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;max_qty&quot;:0,&quot;backorders_allowed&quot;:false,&quot;is_in_stock&quot;:false,&quot;is_downloadable&quot;:false,&quot;is_virtual&quot;:false,&quot;is_sold_individually&quot;:&quot;no&quot;}]">
+                                               <table class="variations table" cellspacing="0">
+                                                  <tbody>
+                                                     <tr>
+                                                        <td class="labels col-md-4"><label for="pa_size">Taille</label></td>
+                                                        <td class="value col-md-8">
+                                                           <select class="form-control" id="pa_size" name="attribute_pa_size" data-attribute_name="attribute_pa_size">
+                                                              <option value="">Choisir la taille&hellip;</option>
+                                                              <option value="small"  selected='selected'>Small</option>
+                                                              <option value="medium" >Medium</option>
+                                                              <option value="large" >Large</option>
+                                                              <option value="extra-large" >Extra Large</option>						
+                                                          </select> 
+                                                      </td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td class="labels col-md-4"><label for="pa_color">Couleur</label></td>
+                                                    <td class="value col-md-8">
+                                                       <select class="form-control" id="pa_color" name="attribute_pa_color" data-attribute_name="attribute_pa_color">
+                                                          <option value="">Choisir le couleur&hellip;</option>
+                                                          <?php 
+                                                          $ses_sql=mysqli_query($conn,"SELECT `couleur` FROM `couleurs` WHERE idarticle='$id';");
 
-    												</form>
+                                                          while($row=mysqli_fetch_array($ses_sql,MYSQLI_ASSOC)){
+                                                             echo '<option value="'.$row["couleur"].'" >'.$row["couleur"].'</option>';
 
-    												<div class="product_meta">
+                                                         }
+                                                         ?>
 
+                                                     </select> 
+                                                 </td>
+                                             </tr>
+                                         </tbody>
+                                     </table>
 
 
-    													<span class="sku_wrapper"><i class="fa fa-angle-right theme"></i> SKU: <span class="sku" itemprop="sku">N/A</span>.</span><br>
+                                     <div class="single_variation_wrap" style="display:none;">
 
+                                      <div class="row">
+                                         <div class="single_variation col-sm-4"></div>	
+                                         <div class="variations_button col-sm-8">
+                                            <div class="row">
+                                               <div class="col-sm-6"><div class="quantity"><input type="number" step="1"   name="quantity" value="1" title="Qty" class="input-text qty text" size="4" /></div>
+                                           </div>
+                                           <div class="col-sm-6"><button type="submit" class="single_add_to_cart_button btn btn-default theme btn-block alt">Add to cart</button></div>	
+                                       </div>
+                                   </div>
+                                   <div class="col-xs-12">
+                                     <p class="text-center"><small><a class="reset_variations" href="#reset">Clear selection</a></small></p>				</div>
+                                 </div>	
 
-    													<span class="posted_in"><i class="fa fa-angle-right theme"></i> Category: <a href="../../product-category/shirt/index.html" rel="tag">Shirt</a>.</span><br>
-    													<span class="tagged_as"><i class="fa fa-angle-right theme"></i> Tag: <a href="../../product-tag/attributes/index.html" rel="tag">Attributes</a>.</span>
+                                 <input type="hidden" name="add-to-cart" value="65" />
+                                 <input type="hidden" name="product_id" value="65" />
+                                 <input type="hidden" name="variation_id" class="variation_id" value="" />
 
-    												</div>
+                             </div>
 
-    												<hr>
 
-    												<div class="row socialshare">
-    													<div class="col-sm-6 decidernote">Hard to decide? Ask your friends</div>
-    													<div class="col-sm-6 decider">
-    														<a target="_blank" href="http://twitter.com/home?status=Shirt%20With%20Attributes%20-%20http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/" title="Click to share this post on Twitter"><i class="fa fa-twitter-square"></i></a>
-    														<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/&amp;t=Shirt%20With%20Attributes"><i class="fa fa-facebook-square"></i></a>
-    														<a target="_blank" href="http://pinterest.com/pin/create/button?url=http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/&amp;media=http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/328390_mrp_in_l.jpeg&amp;description=Shirt%20With%20Attributes"><i class="fa fa-pinterest-square"></i></a>  
-    														<a target="_blank" href="https://plus.google.com/share?url=http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/"><i class="fa fa-google-plus-square"></i></a>
-    														<a target="_blank" href="mailto:me?subject=Shirt With Attributes&body=http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/"><i class="fa fa-envelope"></i></a>
-    													</div>
-    												</div>
-    												<div class="woocommerce-tabs">
-    													<ul class="tabs nav nav-tabs">
 
-    														<li class="description_tab">
-    															<a href="#tab-description"><i class="fa fa-th-large theme"></i>  Description</a>
-    														</li>
+                         </form>
 
+                         <div class="product_meta">
 
-    														<li class="additional_information_tab">
-    															<a href="#tab-additional_information"><i class="fa fa-th-large theme"></i>  Additional Information</a>
-    														</li>
 
 
-    														<li class="reviews_tab">
-    															<a href="#tab-reviews"><i class="fa fa-th-large theme"></i>  Reviews (0)</a>
-    														</li>
+                           <span class="sku_wrapper"><i class="fa fa-angle-right theme"></i> SKU: <span class="sku" itemprop="sku">N/A</span>.</span><br>
 
-    													</ul>
 
-    													<div class="panel entry-content" id="tab-description">
+                           <span class="posted_in"><i class="fa fa-angle-right theme"></i> Category: <a href="../../product-category/shirt/index.html" rel="tag">Shirt</a>.</span><br>
+                           <span class="tagged_as"><i class="fa fa-angle-right theme"></i> Tag: <a href="../../product-tag/attributes/index.html" rel="tag">Attributes</a>.</span>
 
-    														<h2>Product Description</h2>
+                       </div>
 
-    														<p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor lobortis. Pellentesque eu est a nulla placerat dignissim. Morbi a enim in magna semper bibendum. Etiam scelerisque, nunc ac egestas consequat, odio nibh euismod nulla, eget auctor.</p>
-    													</div>
+                       <hr>
 
+                       <div class="row socialshare">
+                           <div class="col-sm-6 decidernote">Hard to decide? Ask your friends</div>
+                           <div class="col-sm-6 decider">
+                              <a target="_blank" href="http://twitter.com/home?status=Shirt%20With%20Attributes%20-%20http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/" title="Click to share this post on Twitter"><i class="fa fa-twitter-square"></i></a>
+                              <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/&amp;t=Shirt%20With%20Attributes"><i class="fa fa-facebook-square"></i></a>
+                              <a target="_blank" href="http://pinterest.com/pin/create/button?url=http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/&amp;media=http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/328390_mrp_in_l.jpeg&amp;description=Shirt%20With%20Attributes"><i class="fa fa-pinterest-square"></i></a>  
+                              <a target="_blank" href="https://plus.google.com/share?url=http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/"><i class="fa fa-google-plus-square"></i></a>
+                              <a target="_blank" href="mailto:me?subject=Shirt With Attributes&body=http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/"><i class="fa fa-envelope"></i></a>
+                          </div>
+                      </div>
+                      <div class="woocommerce-tabs">
+                       <ul class="tabs nav nav-tabs">
 
-    													<div class="panel entry-content" id="tab-additional_information">
+                          <li class="description_tab">
+                             <a href="#tab-description"><i class="fa fa-th-large theme"></i>  Description</a>
+                         </li>
 
-    														<h2>Additional Information</h2>
 
-    														<table class="shop_attributes table table-bordered">
+                         <li class="additional_information_tab">
+                             <a href="#tab-additional_information"><i class="fa fa-th-large theme"></i>  Additional Information</a>
+                         </li>
 
 
+                         <li class="reviews_tab">
+                             <a href="#tab-reviews"><i class="fa fa-th-large theme"></i>  Reviews (0)</a>
+                         </li>
 
+                     </ul>
 
+                     <div class="panel entry-content" id="tab-description">
 
-    															<tr class="">
-    																<th>Size</th>
-    																<td><p>Small, Medium, Large, Extra Large</p>
-    																</td>
-    															</tr>
-    															<tr class="alt">
-    																<th>Color</th>
-    																<td><p>Blue, Red, Green, Pink, Yellow</p>
-    																</td>
-    															</tr>
+                      <h2>Product Description</h2>
 
-    														</table>
-    													</div>
+                      <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor lobortis. Pellentesque eu est a nulla placerat dignissim. Morbi a enim in magna semper bibendum. Etiam scelerisque, nunc ac egestas consequat, odio nibh euismod nulla, eget auctor.</p>
+                  </div>
 
 
-    													<div class="panel entry-content" id="tab-reviews">
-    														<div id="reviews">
-    															<div id="comments">
-    																<h2>Reviews</h2>
+                  <div class="panel entry-content" id="tab-additional_information">
 
+                      <h2>Additional Information</h2>
 
-    																<p class="woocommerce-noreviews">There are no reviews yet.</p>
+                      <table class="shop_attributes table table-bordered">
 
-    															</div>
 
 
-    															<div id="review_form_wrapper">
-    																<div id="review_form">
-    																	<div id="respond" class="comment-respond">
-    																		<h3 id="reply-title" class="comment-reply-title">Be the first to review &ldquo;Shirt With Attributes&rdquo; <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h3>
-    																		<form action="http://thehumblespace.com/wp/humbleshop/wp-comments-post.php" method="post" id="commentform" class="comment-form">
-    																			<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required="true" /></p>
-    																			<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" aria-required="true" /></p>
-    																			<p class="comment-form-rating"><label for="rating">Your Rating</label><select name="rating" id="rating">
-    																				<option value="">Rate&hellip;</option>
-    																				<option value="5">Perfect</option>
-    																				<option value="4">Good</option>
-    																				<option value="3">Average</option>
-    																				<option value="2">Not that bad</option>
-    																				<option value="1">Very Poor</option>
-    																			</select></p><p class="comment-form-comment"><label for="comment">Your Review</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>												<p class="form-submit">
-    																			<input name="submit" type="submit" id="submit" class="submit" value="Submit" />
-    																			<input type='hidden' name='comment_post_ID' value='65' id='comment_post_ID' />
-    																			<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-    																		</p>
-    																	</form>
-    																</div><!-- #respond -->
-    															</div>
-    														</div>
 
 
-    														<div class="clear"></div>
-    													</div>
-    												</div>
+                         <tr class="">
+                            <th>Size</th>
+                            <td><p>Small, Medium, Large, Extra Large</p>
+                            </td>
+                        </tr>
+                        <tr class="alt">
+                            <th>Color</th>
+                            <td><p>Blue, Red, Green, Pink, Yellow</p>
+                            </td>
+                        </tr>
 
-    											</div>
+                    </table>
+                </div>
 
-    										</div>
 
-    									</div><!-- .summary -->	
-    								</div>
+                <div class="panel entry-content" id="tab-reviews">
+                  <div id="reviews">
+                     <div id="comments">
+                        <h2>Reviews</h2>
 
-    								<hr>
-    								<div class="upsells products clearfix">
 
-    									<h5>YOU MAY ALSO LIKE&hellip;</h5>
+                        <p class="woocommerce-noreviews">There are no reviews yet.</p>
 
-    									<div id="products" class="products row">
+                    </div>
 
 
-    										<article class="product col-sm-3"> 
+                    <div id="review_form_wrapper">
+                        <div id="review_form">
+                           <div id="respond" class="comment-respond">
+                              <h3 id="reply-title" class="comment-reply-title">Be the first to review &ldquo;Shirt With Attributes&rdquo; <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h3>
+                              <form action="http://thehumblespace.com/wp/humbleshop/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+                                 <p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required="true" /></p>
+                                 <p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" aria-required="true" /></p>
+                                 <p class="comment-form-rating"><label for="rating">Your Rating</label><select name="rating" id="rating">
+                                    <option value="">Rate&hellip;</option>
+                                    <option value="5">Perfect</option>
+                                    <option value="4">Good</option>
+                                    <option value="3">Average</option>
+                                    <option value="2">Not that bad</option>
+                                    <option value="1">Very Poor</option>
+                                </select></p><p class="comment-form-comment"><label for="comment">Your Review</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>												<p class="form-submit">
+                                <input name="submit" type="submit" id="submit" class="submit" value="Submit" />
+                                <input type='hidden' name='comment_post_ID' value='65' id='comment_post_ID' />
+                                <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                            </p>
+                        </form>
+                    </div><!-- #respond -->
+                </div>
+            </div>
 
 
-    											<div class="view view-thumb">
-    												<img src="../../wp-content/uploads/2013/01/196623_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/196623_mrp_in_l.jpeg" alt="Rough Sunset Jacket"/>
-    												<div class="mask">
-    													<h2 class="maskprice"><span class="amount">&pound;123.00</span></h2>
-    													<p>Ut in nulla eni..</p>                    <form action="http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/?add-to-cart=110" class="cart" method="post" enctype='multipart/form-data'>
-    													<a href="../rough-sunset-jacket/index.html" class="btn btn-sm custom">View</a> 
-    													<button type="submit" class="single_add_to_cart_button btn btn-sm custom">Buy</button>
-    												</form>
-    											</div>
-    										</div>
-    										<p class="product-title"><a href="../rough-sunset-jacket/index.html">Rough Sunset Jacket</a></p>
+            <div class="clear"></div>
+        </div>
+    </div>
 
+</div>
 
+</div>
 
-    									</article>
+</div><!-- .summary -->	
+</div>
 
+<hr>
+<div class="upsells products clearfix">
 
-    									<article class="product col-sm-3"> 
+   <h5>YOU MAY ALSO LIKE&hellip;</h5>
 
+   <div id="products" class="products row">
 
-    										<div class="view view-thumb">
-    											<img src="../../wp-content/uploads/2013/01/340332_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/340332_mrp_in_l.jpeg" alt="Red Garage"/>
-    											<div class="mask">
-    												<h2 class="maskprice"><span class="amount">&pound;83.00</span></h2>
-    												<p>Ut in nulla eni..</p>                    <form action="http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/?add-to-cart=99" class="cart" method="post" enctype='multipart/form-data'>
-    												<a href="../red-garage/index.html" class="btn btn-sm custom">View</a> 
-    												<button type="submit" class="single_add_to_cart_button btn btn-sm custom">Buy</button>
-    											</form>
-    										</div>
-    									</div>
-    									<p class="product-title"><a href="../red-garage/index.html">Red Garage</a></p>
 
+      <article class="product col-sm-3"> 
 
 
-    								</article>
+         <div class="view view-thumb">
+            <img src="../../wp-content/uploads/2013/01/196623_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/196623_mrp_in_l.jpeg" alt="Rough Sunset Jacket"/>
+            <div class="mask">
+               <h2 class="maskprice"><span class="amount">&pound;123.00</span></h2>
+               <p>Ut in nulla eni..</p>                    <form action="http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/?add-to-cart=110" class="cart" method="post" enctype='multipart/form-data'>
+               <a href="../rough-sunset-jacket/index.html" class="btn btn-sm custom">View</a> 
+               <button type="submit" class="single_add_to_cart_button btn btn-sm custom">Buy</button>
+           </form>
+       </div>
+   </div>
+   <p class="product-title"><a href="../rough-sunset-jacket/index.html">Rough Sunset Jacket</a></p>
 
 
-    								<article class="product col-sm-3"> 
 
+</article>
 
-    									<div class="view view-thumb">
-    										<img src="../../wp-content/uploads/2013/01/340333_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/340333_mrp_in_l.jpeg" alt="Blues Denim"/>
-    										<div class="mask">
-    											<h2 class="maskprice"><span class="amount">&pound;199.00</span></h2>
-    											<p>Praesent id met..</p>                    <form action="http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/?add-to-cart=107" class="cart" method="post" enctype='multipart/form-data'>
-    											<a href="../blues-denim/index.html" class="btn btn-sm custom">View</a> 
-    											<button type="submit" class="single_add_to_cart_button btn btn-sm custom">Buy</button>
-    										</form>
-    									</div>
-    								</div>
-    								<p class="product-title"><a href="../blues-denim/index.html">Blues Denim</a></p>
 
+<article class="product col-sm-3"> 
 
 
-    							</article>
+  <div class="view view-thumb">
+     <img src="../../wp-content/uploads/2013/01/340332_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/340332_mrp_in_l.jpeg" alt="Red Garage"/>
+     <div class="mask">
+        <h2 class="maskprice"><span class="amount">&pound;83.00</span></h2>
+        <p>Ut in nulla eni..</p>                    <form action="http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/?add-to-cart=99" class="cart" method="post" enctype='multipart/form-data'>
+        <a href="../red-garage/index.html" class="btn btn-sm custom">View</a> 
+        <button type="submit" class="single_add_to_cart_button btn btn-sm custom">Buy</button>
+    </form>
+</div>
+</div>
+<p class="product-title"><a href="../red-garage/index.html">Red Garage</a></p>
 
 
-    							<article class="product col-sm-3"> 
 
+</article>
 
-    								<div class="view view-thumb">
-    									<img src="../../wp-content/uploads/2013/01/194809_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/194809_mrp_in_l.jpeg" alt="Simple Kinky Shirt"/>
-    									<div class="mask">
-    										<h2 class="maskprice"><span class="amount">&pound;98.00</span></h2>
-    										<p>In pellentesque..</p>                    <form action="http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/?add-to-cart=58" class="cart" method="post" enctype='multipart/form-data'>
-    										<a href="../simple-kinky-shirt/index.html" class="btn btn-sm custom">View</a> 
-    										<button type="submit" class="single_add_to_cart_button btn btn-sm custom">Buy</button>
-    									</form>
-    								</div>
-    							</div>
-    							<p class="product-title"><a href="../simple-kinky-shirt/index.html">Simple Kinky Shirt</a></p>
 
+<article class="product col-sm-3"> 
 
 
-    						</article>
+   <div class="view view-thumb">
+      <img src="../../wp-content/uploads/2013/01/340333_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/340333_mrp_in_l.jpeg" alt="Blues Denim"/>
+      <div class="mask">
+         <h2 class="maskprice"><span class="amount">&pound;199.00</span></h2>
+         <p>Praesent id met..</p>                    <form action="http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/?add-to-cart=107" class="cart" method="post" enctype='multipart/form-data'>
+         <a href="../blues-denim/index.html" class="btn btn-sm custom">View</a> 
+         <button type="submit" class="single_add_to_cart_button btn btn-sm custom">Buy</button>
+     </form>
+ </div>
+</div>
+<p class="product-title"><a href="../blues-denim/index.html">Blues Denim</a></p>
 
-    					</div>
-    				</div>
 
 
-    				<meta itemprop="url" content="index.html" />
+</article>
 
-    			</div><!-- #product-65 -->
 
+<article class="product col-sm-3"> 
 
 
-    		</div> 
+    <div class="view view-thumb">
+       <img src="../../wp-content/uploads/2013/01/194809_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/194809_mrp_in_l.jpeg" alt="Simple Kinky Shirt"/>
+       <div class="mask">
+          <h2 class="maskprice"><span class="amount">&pound;98.00</span></h2>
+          <p>In pellentesque..</p>                    <form action="http://thehumblespace.com/wp/humbleshop/shop/shirt-with-attributes/?add-to-cart=58" class="cart" method="post" enctype='multipart/form-data'>
+          <a href="../simple-kinky-shirt/index.html" class="btn btn-sm custom">View</a> 
+          <button type="submit" class="single_add_to_cart_button btn btn-sm custom">Buy</button>
+      </form>
+  </div>
+</div>
+<p class="product-title"><a href="../simple-kinky-shirt/index.html">Simple Kinky Shirt</a></p>
 
 
-    	</div>
 
-    </section>
+</article>
+
+</div>
+</div>
+
+
+<meta itemprop="url" content="index.html" />
+
+</div><!-- #product-65 -->
+
+
+
+</div> 
+
+
+</div>
+
+</section>
 
 </div></div>
 
