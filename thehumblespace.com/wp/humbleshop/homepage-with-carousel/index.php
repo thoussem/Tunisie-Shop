@@ -153,7 +153,7 @@
     					<div class="counter">
     						<a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>
     							<span class="hidden-xs">Total</span> </a> : 
-    							<span class="theme"><span class="amount">0.00 DT</span></span>
+    							<span class="theme"><span class="amount">&euro;0.00</span></span>
     						</div>
 
     						<!-- Bubble Cart Item -->
@@ -222,8 +222,9 @@
     							</li>
     							<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25"><a href="../shop/index.php">BOUTIQUE</a>
     								<ul class="nav">
-    									<li id="menu-item-482" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-482"><a href="../wide-shop/index.html">Wide Shop</a></li>
-    									<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-206"><a href="../shop/red-garage/index.html">Product</a></li>
+    									<li id="menu-item-482" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-482"><a href="index_H.php">Homme</a></li>
+    									<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-206"><a href="index_F.php">Femme</a></li>
+                                        <li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-206"><a href="index_E.php">Enfant</a></li>
     								</ul>
     							</li>
     							<li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-16"><a href="../my-account/index.php">MON COMPTE</a>
@@ -310,7 +311,7 @@
 
     									<?php
 
-    									$ses_sql=mysqli_query($conn,"SELECT * FROM `articles`;");
+    									$ses_sql=mysqli_query($conn,"SELECT * FROM `articles` WHERE vedette=1;");
 
     									while($row=mysqli_fetch_array($ses_sql,MYSQLI_ASSOC)){
     										echo '
@@ -321,7 +322,7 @@
     										<img src="../wp-content/uploads/2013/01/'.$row['srcimg'].'" alt="'.$row['nom'].'"/>
     										<div class="mask">
     										<h2 class="maskprice">
-    										<span class="amount">&pound;'.$row['prix'].'</span>			</h2>
+    										<span class="amount">&euro;'.$row['prix'].'</span>			</h2>
     										<form class="cart" method="post" enctype=\'multipart/form-data\'>
     										<p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl t..</p>										
     										<a href="../shop/radiohead-pocket/index.html" class="btn btn-sm custom">Voir</a> 
@@ -341,27 +342,6 @@
     									?>
 
     								</article>								
-
-    								<article class="product col-sm-4"> 
-    									<div class="view view-thumb">
-
-    										<!-- Sale -->
-
-    										<!-- Thumbnail -->
-    										<img src="../wp-content/uploads/2013/01/328390_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/328390_mrp_in_l.jpeg" alt="Shirt With Attributes"/>
-    										<div class="mask">
-    											<h2 class="maskprice">
-    												<del><span class="amount">&pound;56.00</span>&ndash;<span class="amount">&pound;77.00</span></del> <ins><span class="amount">&pound;44.00</span>&ndash;<span class="amount">&pound;57.00</span></ins>			</h2>
-    												<form class="cart" method="post" enctype='multipart/form-data'>
-    													<p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fring..</p>				<a href="../shop/shirt-with-attributes/index.html" rel="nofollow" data-product_id="65" class="btn btn-sm add_to_cart_button product_type_variable custom">Select</a>	
-    												</form>
-    											</div>
-    										</div>
-    										<p class="product-title">
-    											<a href="../shop/shirt-with-attributes/index.html">Shirt With Attributes</a>
-    										</p>
-
-    									</article>	
     								</div><!--/.products-->
     							</div>
 
