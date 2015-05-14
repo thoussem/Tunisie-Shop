@@ -342,28 +342,7 @@
 
     									?>
 
-    								</article>								
-
-    								<article class="product col-sm-4"> 
-    									<div class="view view-thumb">
-
-    										<!-- Sale -->
-
-    										<!-- Thumbnail -->
-    										<img src="../wp-content/uploads/2013/01/328390_mrp_in_l.jpg" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/328390_mrp_in_l.jpeg" alt="Shirt With Attributes"/>
-    										<div class="mask">
-    											<h2 class="maskprice">
-    												<del><span class="amount">&pound;56.00</span>&ndash;<span class="amount">&pound;77.00</span></del> <ins><span class="amount">&pound;44.00</span>&ndash;<span class="amount">&pound;57.00</span></ins>			</h2>
-    												<form class="cart" method="post" enctype='multipart/form-data'>
-    													<p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fring..</p>				<a href="../shop/shirt-with-attributes/index.html" rel="nofollow" data-product_id="65" class="btn btn-sm add_to_cart_button product_type_variable custom">Select</a>	
-    												</form>
-    											</div>
-    										</div>
-    										<p class="product-title">
-    											<a href="../shop/shirt-with-attributes/index.html">Shirt With Attributes</a>
-    										</p>
-
-    									</article>	
+    								
     								</div><!--/.products-->
     							</div>
 
