@@ -309,6 +309,8 @@
 
     								<div class="products clearfix">
 
+                                        <!--Affichage des produit-->
+
     									<?php
 
     									$ses_sql=mysqli_query($conn,"SELECT * FROM `articles` WHERE vedette=1;");
@@ -322,10 +324,14 @@
     										<img src="../wp-content/uploads/2013/01/'.$row['srcimg'].'" alt="'.$row['nom'].'"/>
     										<div class="mask">
     										<h2 class="maskprice">
+<<<<<<< HEAD
     										<span class="amount">&euro;'.$row['prix'].'</span>			</h2>
+=======
+    										<span class="amount">'.$row['prix'].' DT</span>			</h2>
+>>>>>>> origin/master
     										<form class="cart" method="post" enctype=\'multipart/form-data\'>
     										<p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl t..</p>										
-    										<a href="../shop/radiohead-pocket/index.html" class="btn btn-sm custom">Voir</a> 
+    										<a href="../shop/shirt-with-attributes/index.php?id='.$row['id'].'&amp;nom='.$row['nom'].'" class="btn btn-sm custom">Voir</a> 
     										<input type="hidden" name="add-to-cart" value="120" />
     										<button type="submit" class="btn btn-sm alt custom">Acheter</button>
     										</form>
@@ -341,7 +347,11 @@
 
     									?>
 
+<<<<<<< HEAD
     								</article>								
+=======
+    								
+>>>>>>> origin/master
     								</div><!--/.products-->
     							</div>
 
