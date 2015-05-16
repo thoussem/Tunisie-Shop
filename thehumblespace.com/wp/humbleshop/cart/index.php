@@ -4,6 +4,20 @@
 <!-- Mirrored from thehumblespace.com/wp/humbleshop/cart/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Apr 2015 22:17:24 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
+	<?php
+	include("lock.php");
+	include("panier.php");
+	if(isset($_GET['id'])){
+        $id=$_GET['id'];
+        supprim_article($id);
+    }
+    if(isset($_GET['supp'])){
+        
+        vider_panier();
+    }
+
+    
+	?>
 	<meta charset="UTF-8" />
 	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,22 +31,22 @@
 	<link rel="icon" href="../wp-content/uploads/2013/01/hsfavicon.png">
 
 	<meta name='robots' content='noindex,follow' />
-<link rel="alternate" type="application/rss+xml" title="HumbleShop &raquo; Feed" href="../feed/index.html" />
-<link rel="alternate" type="application/rss+xml" title="HumbleShop &raquo; Comments Feed" href="../comments/feed/index.html" />
-<link rel='stylesheet' id='contact-form-7-css'  href='../wp-content/plugins/contact-form-7/includes/css/styles0235.css?ver=4.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='yith-woo-featured-video-css'  href='../wp-content/plugins/yith-woocommerce-featured-video/assets/css/woo-featured-video0235.css?ver=4.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/humbleshop/framework/css/bootstrap.min0235.css?ver=4.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='font-css'  href='../wp-content/themes/humbleshop/framework/css/font0235.css?ver=4.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='style-css'  href='../wp-content/themes/humbleshop-child/style0235.css?ver=4.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='ot-dynamic-hs_css-css'  href='../wp-content/themes/humbleshop-child/dynamic2f91.css?ver=2.4.6' type='text/css' media='all' />
-<script type='text/javascript' src='../wp-includes/js/jquery/jquery90f9.js?ver=1.11.1'></script>
-<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min1576.js?ver=1.2.1'></script>
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
-<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../wp-includes/wlwmanifest.xml" /> 
-<meta name="generator" content="WordPress 4.1.1" />
-<meta name="generator" content="WooCommerce 2.3.7" />
-<link rel='canonical' href='index.html' />
-<link rel='shortlink' href='../indexc4f7.html?p=7' />
+	<link rel="alternate" type="application/rss+xml" title="HumbleShop &raquo; Feed" href="../feed/index.html" />
+	<link rel="alternate" type="application/rss+xml" title="HumbleShop &raquo; Comments Feed" href="../comments/feed/index.html" />
+	<link rel='stylesheet' id='contact-form-7-css'  href='../wp-content/plugins/contact-form-7/includes/css/styles0235.css?ver=4.1.1' type='text/css' media='all' />
+	<link rel='stylesheet' id='yith-woo-featured-video-css'  href='../wp-content/plugins/yith-woocommerce-featured-video/assets/css/woo-featured-video0235.css?ver=4.1.1' type='text/css' media='all' />
+	<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/humbleshop/framework/css/bootstrap.min0235.css?ver=4.1.1' type='text/css' media='all' />
+	<link rel='stylesheet' id='font-css'  href='../wp-content/themes/humbleshop/framework/css/font0235.css?ver=4.1.1' type='text/css' media='all' />
+	<link rel='stylesheet' id='style-css'  href='../wp-content/themes/humbleshop-child/style0235.css?ver=4.1.1' type='text/css' media='all' />
+	<link rel='stylesheet' id='ot-dynamic-hs_css-css'  href='../wp-content/themes/humbleshop-child/dynamic2f91.css?ver=2.4.6' type='text/css' media='all' />
+	<script type='text/javascript' src='../wp-includes/js/jquery/jquery90f9.js?ver=1.11.1'></script>
+	<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min1576.js?ver=1.2.1'></script>
+	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../wp-includes/wlwmanifest.xml" /> 
+	<meta name="generator" content="WordPress 4.1.1" />
+	<meta name="generator" content="WooCommerce 2.3.7" />
+	<link rel='canonical' href='index.html' />
+	<link rel='shortlink' href='../indexc4f7.html?p=7' />
 	<!-- Open Graph -->
 	<meta property="og:title" content="Cart" />
 	<meta property="og:url" content="http://thehumblespace.com/wp/humbleshop/cart/" />
@@ -43,478 +57,444 @@
 	<style type="text/css">
 
 	@import url(http://fonts.googleapis.com/css?family=Bangers|Lato);			
-		.wf-active {font-family: 'Lato',serif;}
+	.wf-active {font-family: 'Lato',serif;}
 	
-		.wf-active .logo {
+	.wf-active .logo {
 		font-family: 'Bangers', serif;
 		font-size: ;
 	}
 
 	body {
 		
-	font-family: ; 
-	font-size: ;
-	color: ;
-	font-variant: ;
-	font-weight: ;
-	letter-spacing: ;
-	line-height: ;
-	text-decoration: ;
-	text-transform: ;
+		font-family: ; 
+		font-size: ;
+		color: ;
+		font-variant: ;
+		font-weight: ;
+		letter-spacing: ;
+		line-height: ;
+		text-decoration: ;
+		text-transform: ;
 
-	background-color: ;
-	background-repeat: ;
-	background-attachment: ;
-	background-position: left top;
-	 background-image: url(../wp-content/uploads/2013/01/px_by_Gre3g.png); 	}
-
-
-	h1,h2,h3,h4,h5,h6 { font-family: ;  }
-		
-	.well {border-color: ; }
-	.btn.theme {border-color : #E55137;}
-
-	a, .product_list_widget li a, flex-caption {color: }
-	.pagination>.active>a, {position: relative; color: white} {color: }
-	
-	a:hover, footer a:hover, footer a.active, aside a, em.on, .theme, .page h5, .page h2:not(.maskprice), .page .woocommerce h3, a.theme , .product .sidebar h5, #comments strong {color: #E55137}
-	.feat .nav-pills > .active > a, .feat .nav-pills > .active > a:hover, .product .nav-pills > .active > a, .product .nav-pills > .active > a:hover, button.theme, .share a, .flex-control-paging li a.flex-active, .horizontal-nav li a:hover, .horizontal-nav li li a:hover, .btn.theme, .btn-theme, section.single .onsale, .view-thumb .onsale, .pagination>.active>a, .pagination>.active>a:hover { background: #E55137 }
-
-	.container, .horizontal-nav ul, h6.subhead strong { background: #ffffff }
-	button.theme, .share a, .share a:hover, .horizontal-nav li a:hover, .btn.theme, .btn-theme, section.single .onsale, .view-thumb .onsale { color: #ffffff }
-	header.prime, .sidebar .tags span, .comments article:hover { background: #F2F2F2 }
-
-	.promo img {border: 1px solid #DDDDDD}
-	.horizontal-nav ul, .blog article, .archive article, .search article, .line, hr, .product .sidebar li {border-top: 1px solid #DDDDDD;}
-	.product .tab-content.sideline { border-left: 1px solid #DDDDDD }
-	header.prime, .horizontal-nav ul, .gmap  { border-bottom: 1px solid #DDDDDD }
-	.price_slider_amount button[type="submit"] {color: #E55137 ;}
-
-	footer, footer .container {
 		background-color: ;
 		background-repeat: ;
 		background-attachment: ;
-		background-position: ;
-		background-image: url();
-		color: #777777	}
-	footer a {color: #bbbbbb}
-	footer .doubleline { 
-		border-top:1px solid #333333; 
-		border-bottom: 1px solid #333333; 
-	}
+		background-position: left top;
+		background-image: url(../wp-content/uploads/2013/01/px_by_Gre3g.png); 	}
 
-	
+
+		h1,h2,h3,h4,h5,h6 { font-family: ;  }
+		
+		.well {border-color: ; }
+		.btn.theme {border-color : #E55137;}
+
+		a, .product_list_widget li a, flex-caption {color: }
+		.pagination>.active>a, {position: relative; color: white} {color: }
+
+		a:hover, footer a:hover, footer a.active, aside a, em.on, .theme, .page h5, .page h2:not(.maskprice), .page .woocommerce h3, a.theme , .product .sidebar h5, #comments strong {color: #E55137}
+		.feat .nav-pills > .active > a, .feat .nav-pills > .active > a:hover, .product .nav-pills > .active > a, .product .nav-pills > .active > a:hover, button.theme, .share a, .flex-control-paging li a.flex-active, .horizontal-nav li a:hover, .horizontal-nav li li a:hover, .btn.theme, .btn-theme, section.single .onsale, .view-thumb .onsale, .pagination>.active>a, .pagination>.active>a:hover { background: #E55137 }
+
+		.container, .horizontal-nav ul, h6.subhead strong { background: #ffffff }
+		button.theme, .share a, .share a:hover, .horizontal-nav li a:hover, .btn.theme, .btn-theme, section.single .onsale, .view-thumb .onsale { color: #ffffff }
+		header.prime, .sidebar .tags span, .comments article:hover { background: #F2F2F2 }
+
+		.promo img {border: 1px solid #DDDDDD}
+		.horizontal-nav ul, .blog article, .archive article, .search article, .line, hr, .product .sidebar li {border-top: 1px solid #DDDDDD;}
+		.product .tab-content.sideline { border-left: 1px solid #DDDDDD }
+		header.prime, .horizontal-nav ul, .gmap  { border-bottom: 1px solid #DDDDDD }
+		.price_slider_amount button[type="submit"] {color: #E55137 ;}
+
+		footer, footer .container {
+			background-color: ;
+			background-repeat: ;
+			background-attachment: ;
+			background-position: ;
+			background-image: url();
+			color: #777777	}
+			footer a {color: #bbbbbb}
+			footer .doubleline { 
+				border-top:1px solid #333333; 
+				border-bottom: 1px solid #333333; 
+			}
+
+
 			
-	</style>
-	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
-	
+			</style>
+			<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+
 	<!--[if lt IE 9]>
         <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv-printshiv.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-</head>
+        <![endif]-->
+    </head>
 
-<body class="page page-id-7 page-template page-template-page-full page-template-page-full-php woocommerce-cart woocommerce-page wf-active">
-
-	
-	
-	<!-- ====== -->
-	<!-- TOPBAR -->
-	<!-- ====== -->
-	<div class="container welcome">
-		<div class="row">
-			<div class="pull-left greet">
-				<span class="hidden-xs">Welcome</span> 					<span class="hidden-xs">shopper,</span> <a href="../my-account/index.html">login or register</a>
-							</div>
-			<div class="pull-right hscart text-right">
-				
-				<!-- Cart Updates -->
-				<div class="counter">
-					<a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Totals</span> </a> : <span class="theme"><span class="amount">&pound;0.00</span></span>
-				</div>
-				
-				<!-- Bubble Cart Item -->
-				<div class="cartbubble">
-			
-					<div class="arrow-box">
-
-						
-						
-						<div class="clearfix text-center">
-							No products in the cart. <br>
-							<a href="javascript:void(0)" id="closeit">Close</a>
-						</div>
-
-						
-					</div>
-					
-				</div>
-			</div>
-		</div>	
-	</div>
-	
-	
-	<!-- ================= -->
-	<!-- HEADER & BRANDING -->
-	<!-- ================= -->
-	
-	<div class="container head">
-		<div class="row">
-			<div class="col-xs-12 clearfix">
-				<div class="top row">
-					
-													<div class="col-sm-8 logo image">
-								<a href="../index.html" title="HumbleShop" rel="home">
-  									<img src="../wp-content/uploads/2013/01/highreslogo-300x75.png" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/retina1.png" alt="" class="img-responsive" />
-  								</a>
-  							</div>
-											
-					<div class="searchcart col-sm-4">
-													<form role="search" method="get" id="searchform" action="http://thehumblespace.com/wp/humbleshop/" class="topsearch form-inline">
-					            <div class="form-group">
-					                <input type="text" value="" name="s" id="s" placeholder="Search" class="top-search input-text" />
-					                <button type="submit" id="searchsubmit" value="Search" class="btn"><i class="fa fa-search"></i></button>
-					                <input type="hidden" name="post_type" value="product" />
-					            </div>
-					        </form>
-							
-					</div>
-				</div>	
-			</div>
-		</div>
-	</div>
-
-	<!-- ================ -->
-	<!-- MAIN NAV SECTION -->
-	<!-- ================ -->
-	
-	<nav class="container">
-		<div class="row">		
-			<div class="col-12">
-				<nav class="horizontal-nav full-width">
-					<ul id="nav" class="nav hidden-xs"><li id="menu-item-218" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-218"><a href="../index.html">Home</a>
-<ul class="nav">
-	<li id="menu-item-217" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-217"><a href="../homepage-with-carousel/index.html">Homepage Carousel</a></li>
-</ul>
-</li>
-<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25"><a href="../shop/index.html">Shop</a>
-<ul class="nav">
-	<li id="menu-item-482" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-482"><a href="../wide-shop/index.html">Wide Shop</a></li>
-	<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-206"><a href="../shop/red-garage/index.html">Product</a></li>
-</ul>
-</li>
-<li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-16"><a href="../my-account/index.html">My Account</a>
-<ul class="nav">
-	<li id="menu-item-489" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-489"><a href="../checkout/index.html">Checkout</a></li>
-	<li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-7 current_page_item menu-item-24"><a href="index.html">Chariot</a></li>
-</ul>
-</li>
-<li id="menu-item-194" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-194"><a href="../page-left-sidebar/index.html">Page</a>
-<ul class="nav">
-	<li id="menu-item-195" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-195"><a href="../page-right-sidebar/index.html">Page Right Sidebar</a></li>
-</ul>
-</li>
-<li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="../blog/index.html">Blog</a></li>
-<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="../contact-us/index.html">Contact</a></li>
-</ul>				</nav>
-			</div>
-		</div>
-	</nav>
-<!-- ============= -->
-<!-- PAGE TEMPLATE -->
-<!-- ============= -->
-
-<div class="container">
-	<section class="page">
-		
-		<div class="row">
-			<header class="col-xs-12 prime">
-				<h3>Mon Compte</h3>
-			</header>
-		</div>
-
-		<div class="wrap">
-			<div class="row ">
-
-				<!-- Content -->
-				<div class="col-xs-12">	
-					
-						<div class="content clearfix">
-							<div class="woocommerce">
-
-
-			<?php if(!empty($success)): ?>
-			<ul class="woocommerce-error alert list-unstyled alert-success">
-			<li><strong>SUCCESS</strong>: <?php echo $success ;?> 
-			</li>
-			</ul>
-			<?php endif; ?>
-
-			<?php if(!empty($error)): ?>
-			<ul class="woocommerce-error alert list-unstyled alert-danger">
-			<li><strong>ERREUR</strong>: <?php echo $error ;?> 
-			<a href="lost-password/">Mot de passe oublier?</a></li>
-			</ul>
-			<?php endif; ?>
-
-			<?php if(!empty($pass_error)): ?>
-			<ul class="woocommerce-error alert list-unstyled alert-danger">
-			<li><strong>ERREUR</strong>: <?php echo $pass_error ;?> 
-			</li>
-			</ul>
-			<?php endif; ?>
-
-			<?php if(!empty($user_error)): ?>
-			<ul class="woocommerce-error alert list-unstyled alert-danger">
-			<li><strong>ERREUR</strong>: <?php echo $user_error ;?> 
-			</li>
-			</ul>
-			<?php endif; ?>
+    <body class="page page-id-7 page-template page-template-page-full page-template-page-full-php woocommerce-cart woocommerce-page wf-active">
 
 
 
+    	<!-- ====== -->
+    	<!-- TOPBAR -->
+    	<!-- ====== -->
+    	<div class="container welcome">
+    		<div class="row">
+    			<div class="pull-left greet">
+    				<span class="hidden-xs">Bienvenue</span> 					
+    				<span class="hidden-xs">client,</span> 
+    				<a href="../my-account/index.php">
+    					<?php
+    					if (isset($login_session)){
+    						echo $nom.' '.$prenom;
+    					}
+    					else {echo 'Connexion ou Créer un compte';}
+    					?>
+    				</a>
 
-<div class="col2-set row" id="customer_login">
+    				&nbsp;&nbsp;
 
-	<div class="col-1 col-sm-6">
-
-		<h5>SE connecter</h5>
-
-		<form method="post" action="" class="login" name="connect">
-
-			<p class="form-group form-row-wide" style="color:red">
-				<label></label>
-			</p>
-			<p class="form-group form-row-wide">
-				<label for="username">Nom d'utilisateur ou adresse e-mail <span class="required">*</span></label>
-				<input type="text" class="input-text form-control" name="username" id="username" value=<?php echo "\"$username\"" ;?> />
-			</p>
-			<p class="form-group form-row-wide">
-				<label for="password">Mot de passe <span class="required">*</span></label>
-				<input class="input-text form-control" type="password" name="password" id="password" />
-			</p>
-
-			
-			<p class="form-row">
-				<input type="hidden" id="_wpnonce" name="_wpnonce" value="d3dd4ec73f" />
-				<input type="hidden" name="_wp_http_referer" value="/wp/humbleshop/my-account/" />	
-				<input type="submit" class="btn btn-default theme" name="seconnecter" value="Se connecter" /> 
-				<label for="rememberme" class="inline">
-				<input name="rememberme" type="checkbox" id="rememberme" value="forever"/> Rester identifié</label>
-			</p>
-			<p class="lost_password">
-				<a href="lost-password/index.html">Mot de passe oublier?</a>
-			</p>
-
-		
-			<label style="color:red">* Requis</span></label>
-
-			
-		</form>
+    				<a href="logout.php">
+    					<?php
+    					if (isset($login_session)){
+    						echo "(Déconnexion)";}
+    						?>
+    					</a>
 
 
-	</div>
+    				</div>
+    				<div class="pull-right hscart text-right">
 
-	<?php if(empty($success)): ?>
-	<div class="col-2 col-sm-6">
+    					<!-- Cart Updates -->
+    					<div class="counter">
+    						<a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>
+    							<span class="hidden-xs">Total</span> </a> : 
+    							<span class="theme"><span class="amount"><?php echo montant_panier(); ?> DT</span></span>
+    						</div>
 
-		<h5>Enregistrer</h5>
+    						<!-- Bubble Cart Item -->
+    						<div class="cartbubble">
 
-		<form method="post" class="register" action="" name="reg">
-			<p class="form-group form-row-wide" style="color:red">
-				
-			</p>
-			<p class="form-group form-row-wide">
-				<label for="reg_username">Nom d'utilisateur <span class="required">*</span></label>
-				<input type="text" class="input-text form-control" required  name="reg_username" id="reg_username" value=<?php echo "\"$reg_username\"" ;?> />
-			</p>
-            
-            <p class="form-group form-row-wide">
-				<label for="reg_titre">Titre <span class="required">*</span></label>
-				<select class="input-text form-control" required name="reg_titre" id="reg_titre">
-				<option value="" selected="selected">Sélectionner</option>
-				<option value="mr">Monsieur</option>
-				<option value="mm">Madame</option>
-				<option value="mlle">Mademoiselle</option>
-				</select>
-			</p>
-			
-			<p class="form-group form-row-wide">
-				<label for="reg_email">Adresse e-mail <span class="required">*</span></label>
-				<input type="email" class="input-text form-control" required name="reg_email" id="reg_email" value=<?php echo "\"$email\"" ;?> />
-			</p>
-            
-            <p class="form-group form-row-wide">
-				<label for="reg_pre">Prénom <span class="required">*</span></label>
-				<input type="text" class="input-text form-control" required name="reg_pre" id="reg_pre" value=<?php echo "\"$pre\"" ;?> />
-			</p>
-            
-            <p class="form-group form-row-wide">
-				<label for="reg_nom">Nom <span class="required">*</span></label>
-				<input type="text" class="input-text form-control" required name="reg_nom" id="reg_nom" value=<?php echo "\"$nom\"" ;?> />
-			</p>
+    							<div class="arrow-box">
 
-			<p class="form-group form-row-wide">
-				<label for="reg_password1">Mot de passe <span class="required">*</span></label>
-				<input type="password" class="input-text form-control" required name="reg_password1" id="reg_password1" placeholder="6 caractaires Min" minlength="6"/>
-			</p>
-            
-            <p class="form-group form-row-wide">
-				<label for="reg_password2">Saisissez à nouveau le mot de passe <span class="required">*</span></label>
-				<input type="password" class="input-text form-control" required name="reg_password2" id="reg_password2" placeholder="6 caractaires Min" minlength="6"/>
-			</p>
-            
-            <p class="form-group form-row-wide">
-            
-            
 
-			<!-- Spam Trap -->
-			<div style="left: -999em; position: absolute;">
-				<label for="trap">Anti-spam</label>
-				<input type="text" name="email_2" id="trap" tabindex="-1" />
-			</div>
 
-						
-			<p class="form-row">
-				<input type="hidden" id="_wpnonce" name="_wpnonce" value="53641f801f" />
-				<input type="hidden" name="_wp_http_referer" value="/wp/humbleshop/my-account/" />				
-				<input type="submit" class="btn btn-default theme" name="sinscrire" value="S'inscrire" />
-			</p>
+    								<div class="clearfix text-center">
+    									Aucun produit dans le panier. <br>
+    									<a href="javascript:void(0)" id="closeit">Fermer</a>
+    								</div>
 
-			
-		</form>
 
-	</div>
-	<?php endif; ?>
+    							</div>
 
-</div>
+    						</div>
+    					</div>
+    				</div>	
+    			</div>
 
-</div>
-						</div>
-												
-						<div class="comments clearfix">
-						
-						
 
-	<!-- Comments -->
 
-	<div id="comments" class="comments-area">
+    	<!-- ================= -->
+    	<!-- HEADER & BRANDING -->
+    	<!-- ================= -->
 
-	
-	
-	
-</div><!-- #comments .comments-area -->
-	
-						</div>
+    	<div class="container head">
+    		<div class="row">
+    			<div class="col-xs-12 clearfix">
+    				<div class="top row">
 
-										
-				</div>
-			
-			</div>
-		</div>
+    					<div class="col-sm-8 logo image">
+    						<a href="../index.html" title="HumbleShop" rel="home">
+    							<img src="../wp-content/uploads/2013/01/highreslogo-300x75.png" data-at2x="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/retina1.png" alt="" class="img-responsive" />
+    						</a>
+    					</div>
 
-	</section>
-</div>
+    					<div class="searchcart col-sm-4">
+    						<form role="search" method="get" id="searchform" action="http://thehumblespace.com/wp/humbleshop/" class="topsearch form-inline">
+    							<div class="form-group">
+    								<input type="text" value="" name="s" id="s" placeholder="Search" class="top-search input-text" />
+    								<button type="submit" id="searchsubmit" value="Search" class="btn"><i class="fa fa-search"></i></button>
+    								<input type="hidden" name="post_type" value="product" />
+    							</div>
+    						</form>
 
-<!-- ============== -->
-<!-- FOOTER SECTION -->
-<!-- ============== -->
+    					</div>
+    				</div>	
+    			</div>
+    		</div>
+    	</div>
 
-<footer>
-	<div class="container">
-		<section class="row foot">
+    	<!-- ================ -->
+    	<!-- MAIN NAV SECTION -->
+    	<!-- ================ -->
 
-			<article id="nav_menu-2" class="col-sm-3 widget_nav_menu"><strong class="title">Quick Links</strong><div class="menu-footer-container"><ul id="menu-footer" class="menu"><li id="menu-item-137" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137"><a href="#">About Us</a></li>
-<li id="menu-item-138" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-138"><a href="#">Privacy</a></li>
-<li id="menu-item-139" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-139"><a href="#">Returns Policies</a></li>
-<li id="menu-item-140" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-140"><a href="#">Feedback</a></li>
-<li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142"><a href="../blog/index.html">Blog</a></li>
-<li id="menu-item-141" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-141"><a href="../contact-us/index.html">Contact</a></li>
-</ul></div></article>	
+    	<nav class="container">
+    				<div class="row">		
+    					<div class="col-12">
+    						<nav class="horizontal-nav full-width">
+    							<ul id="nav" class="nav hidden-xs"><li id="menu-item-218" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-218"><a href="index.php">Acceuil</a>
+    								<ul class="nav">
+    									<li id="menu-item-217" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-214 current_page_item menu-item-217"><a href="index.php">Homepage Carousel</a></li>
+    								</ul>
+    							</li>
+    							<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25"><a href="../shop/index.php">BOUTIQUE</a>
+    								<ul class="nav">
+    									<li id="menu-item-482" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-482"><a href="../wide-shop/index.html">Wide Shop</a></li>
+    									<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-206"><a href="../shop/red-garage/index.html">Product</a></li>
+    								</ul>
+    							</li>
+    							<li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-16"><a href="../my-account/index.php">MON COMPTE</a>
+    								<ul class="nav">
+    									<li id="menu-item-489" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-489"><a href="../checkout/index.php">Checkout</a></li>
+    									<li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24"><a href="../cart/index.php">Chariot</a></li>
+    								</ul>
+    							</li>
+    							<li id="menu-item-194" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-194"><a href="../page-left-sidebar/index.html">Page</a>
+    								<ul class="nav">
+    									<li id="menu-item-195" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-195"><a href="../page-right-sidebar/index.html">Page Right Sidebar</a></li>
+    								</ul>
+    							</li>
+    							<li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="../blog/index.html">Blog</a></li>
+    							<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="../contact-us/index.html">Contact</a></li>
+    						</ul>				</nav>
+    					</div>
+    				</div>
+    			</nav>
+    	<!-- ============= -->
+    	<!-- PAGE TEMPLATE -->
+    	<!-- ============= -->
 
-					<article id="recent-posts-5" class="col-sm-3 widget_recent_entries">		<strong class="title">Latest Posts</strong>		<ul>
-					<li>
-				<a href="../demo-now-running-on-benny/index.html">Demo now running on &#8216;Benny&#8217;!</a>
-							<span class="post-date">September 5, 2014</span>
-						</li>
-					<li>
-				<a href="../theme-updated/index.html">Theme Updated!</a>
-							<span class="post-date">February 12, 2014</span>
-						</li>
-					<li>
-				<a href="../sample-audio-format/index.html">Sample Audio Format</a>
-							<span class="post-date">January 11, 2013</span>
-						</li>
-					<li>
-				<a href="../live-your-life/index.html">Live Your Life</a>
-							<span class="post-date">January 10, 2013</span>
-						</li>
-				</ul>
-		</article>
-			<article id="categories-4" class="col-sm-3 widget_categories"><strong class="title">Categories</strong>		<ul>
-	<li class="cat-item cat-item-47"><a href="../category/gallery/index.html" >Gallery</a>
-</li>
-	<li class="cat-item cat-item-44"><a href="../category/music/index.html" >Music</a>
-</li>
-	<li class="cat-item cat-item-1"><a href="../category/uncategorized/index.html" >Uncategorized</a>
-</li>
-	<li class="cat-item cat-item-63"><a href="../category/updates/index.html" >Updates</a>
-</li>
-	<li class="cat-item cat-item-49"><a href="../category/vacation/index.html" >Vacation</a>
-</li>
-		</ul>
-</article>
-							<article class="col-sm-3">
-				<strong class="title">Our location</strong>
-											<address class="row ">
-							<div class="col-xs-2"><i class="fa fa-map-marker"></i></div>
-							<div class="col-xs-10">
-							69-135 Brompton Road<br />Knightsbridge<br />SW1X 0NA<br />United Kingdom‎							</div>
-						</address>
-																<address class="row ">
-							<div class="col-xs-2"><i class="fa fa-phone"></i></div>
-							<div class="col-xs-10">+44 55566888</div>
-						</address>
-					
-											<address class="row ">
-							<div class="col-xs-2"><i class="fa fa-print"></i></div>
-							<div class="col-xs-10">+44 55566999</div>
-						</address>
-					
-											<address class="row ">
-							<div class="col-xs-2"><i class="fa fa-envelope-o"></i></div>
-							<div class="col-xs-10"><a href="mailto:hello@humbleshop.com">hello@humbleshop.com</a></div>
-						</address>
-									</article>
-				
+    	<div class="container">
+    		<section class="page">
 
-		</section>
-		
-		<section class="row doubleline">
-			<div class="col-sm-6 clearfix">
+    			<div class="row">
+    				<header class="col-xs-12 prime">
+    					<h3>Chariot</h3>
+    				</header>
+    			</div>
 
-				<!-- Payment Method -->
-				<div class="payment amex"></div><div class="payment mastercard"></div><div class="payment visa"></div><div class="payment paypal"></div>				
-			</div>
-			<div class="col-sm-6 currency">
-				
-				<p>Recommended hosting for <a title="Recommended Woocommerce Hosting" href="https://www.webfaction.com/?aid=11165" target="_blank">Woocommerce</a>.</p>
-			</div>
-		</section>
+    			<div class="wrap">
+    				<div class="row ">
 
-		<section class="row social">
+    					<!-- Content -->
+    					<div class="col-xs-12">	
 
-			<div class="col-sm-6">&copy;  <a href="../index.html" title="HumbleShop" rel="home">HumbleShop</a> <small>/ Just another Woocommerce shop</small></div>
-			<div class="col-sm-6 channel">
-				<ul>
-					
-					<!-- Social Networks -->
-					<li><a href="http://facebook.com/envato" target="_blank"><i class="fa fa-facebook"></i></a></li>					<li><a href="http://twitter.com/envato" target="_blank"><i class="fa fa-twitter"></i></a></li>					<li><a href="http://plus.google.com/107285294994146126204" target="_blank"><i class="fa fa-google-plus"></i></a></li>					<li><a href="http://pinterest.com/humblespace" target="_blank"><i class="fa fa-pinterest"></i></a></li>										<li><a href="http://instagram.com/herschel" target="_blank"><i class="fa fa-instagram"></i></a></li>
-				</ul>	
-			</div>
+    						<div class="content clearfix">
+    							<div class="woocommerce">
 
-		</section>
-	</div>
+    								<?php if(!isset($_SESSION['panier'])): ?>
+
+    								<p class="cart-empty">Votre panier est actuellement vide.</p>
+    								<p class="return-to-shop">
+    									<a class="button wc-backward" href="http://thehumblespace.com/wp/humbleshop/shop/">Retour à la boutique</a></p>
+
+    								<?php else : ?>
+
+    								<form action="http://thehumblespace.com/wp/humbleshop/cart/" method="post">
+
+
+    									<table class="shop_table cart table" cellspacing="0">
+    										<thead>
+    											<tr>
+    												<th class="product-remove">&nbsp;</th>
+    												<th class="product-thumbnail">&nbsp;</th>
+    												<th class="product-name">Article</th>
+    												<th class="product-price">Prix</th>
+    												<th class="product-quantity">Quantité</th>
+    												<th class="product-taille">Taille</th>
+    												<th class="product-subtotal">Total</th>
+    											</tr>
+    										</thead>
+    										<tbody>
+
+    											<?php 
+    											$nb_art = count($_SESSION['panier']['id_article']);
+    											for($i = 0; $i < $nb_art; $i++) 
+    											{ 
+    												$id=$_SESSION['panier']['id_article'][$i];
+    													//$nombre = $_SESSION['panier']['qte'][$i]; 
+    												$ses_sql=mysqli_query($conn,"SELECT `srcimg`,`nom` FROM `articles` WHERE id='$id';");
+    												$row=mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
+
+    												echo '
+    												<tr class="cart_item">
+
+    												<td class="product-remove">
+    												<a href="index.php?id='.$_SESSION['panier']['id_article'][$i].'" class="remove" title="Remove this item">×</a>					</td>
+
+    												<td class="product-thumbnail">
+    												<a href="../shop/shirt-with-attributes/index.php?id='.$_SESSION['panier']['id_article'][$i].'&amp;nom='.$row['nom'].'">
+    												<img width="100" height="100" src="../wp-content/uploads/2013/01/'.$row['srcimg'].'" class="attachment-shop_thumbnail wp-post-image" alt="sample"></a>					</td>
+
+    												<td class="product-name">
+    												<a href="../shop/shirt-with-attributes/index.php?id='.$_SESSION['panier']['id_article'][$i].'&amp;nom='.$row['nom'].'">'.$row['nom'].'</a>					</td>
+
+    												<td class="product-price">
+    												<span class="amount">'.$_SESSION['panier']['prix'][$i].'</span>					</td>
+
+    												<td class="product-quantity">
+    												<div class="quantity"><input type="number" step="1" min="0" name="qte'.$_SESSION['panier']['id_article'][$i].'" value="'.$_SESSION['panier']['qte'][$i].'" title="Qty" class="input-text qty text" size="4"></div>
+    												</td>
+
+    												<td class="product-taille">
+    												<div class="quantity"><input type="number" step="1" min="0" name="cart[a97da629b098b75c294dffdc3e463904][qty]" value="1" title="Qty" class="input-text qty text" size="4"></div>
+    												</td>
+
+    												<td class="product-subtotal">
+    												<span class="amount">£199.00</span>					</td>
+    												</tr>';
+    											} 
+
+    											?>
+                                                <a href="index.php?supp='.$_SESSION['panier']['id_article'][$i].'" class="remove" title="Remove this item">supprimer</a>
+    											<tr>
+    												<td colspan="6" class="actions">
+
+
+
+    													<div class="row">
+    														<div class="col-sm-4 col-sm-offset-8">
+    															<input type="submit" class="button btn-block btn-theme" name="update_cart" value="Update Cart">
+    														</div>
+    													</div>
+
+
+    													<input type="hidden" id="_wpnonce" name="_wpnonce" value="c778bb54f2"><input type="hidden" name="_wp_http_referer" value="/wp/humbleshop/cart/">			</td>
+    												</tr>
+
+    											</tbody>
+    										</table>
+
+
+    									</form>
+
+
+    								<?php endif; ?>
+    							</div>
+
+    						</div>
+    					</div>
+
+    					<div class="comments clearfix">
+
+
+
+    						<!-- Comments -->
+
+    						<div id="comments" class="comments-area">
+
+
+
+
+    						</div><!-- #comments .comments-area -->
+
+    					</div>
+
+
+    				</div>
+
+    			</div>
+    		</div>
+
+    	</section>
+    </div>
+
+    <!-- ============== -->
+    <!-- FOOTER SECTION -->
+    <!-- ============== -->
+
+    <footer>
+    	<div class="container">
+    		<section class="row foot">
+
+    			<article id="nav_menu-2" class="col-sm-3 widget_nav_menu"><strong class="title">Quick Links</strong><div class="menu-footer-container"><ul id="menu-footer" class="menu"><li id="menu-item-137" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137"><a href="#">About Us</a></li>
+    				<li id="menu-item-138" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-138"><a href="#">Privacy</a></li>
+    				<li id="menu-item-139" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-139"><a href="#">Returns Policies</a></li>
+    				<li id="menu-item-140" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-140"><a href="#">Feedback</a></li>
+    				<li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142"><a href="../blog/index.html">Blog</a></li>
+    				<li id="menu-item-141" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-141"><a href="../contact-us/index.html">Contact</a></li>
+    			</ul></div></article>	
+
+    			<article id="recent-posts-5" class="col-sm-3 widget_recent_entries">		<strong class="title">Latest Posts</strong>		<ul>
+    				<li>
+    					<a href="../demo-now-running-on-benny/index.html">Demo now running on &#8216;Benny&#8217;!</a>
+    					<span class="post-date">September 5, 2014</span>
+    				</li>
+    				<li>
+    					<a href="../theme-updated/index.html">Theme Updated!</a>
+    					<span class="post-date">February 12, 2014</span>
+    				</li>
+    				<li>
+    					<a href="../sample-audio-format/index.html">Sample Audio Format</a>
+    					<span class="post-date">January 11, 2013</span>
+    				</li>
+    				<li>
+    					<a href="../live-your-life/index.html">Live Your Life</a>
+    					<span class="post-date">January 10, 2013</span>
+    				</li>
+    			</ul>
+    		</article>
+    		<article id="categories-4" class="col-sm-3 widget_categories"><strong class="title">Categories</strong>		<ul>
+    			<li class="cat-item cat-item-47"><a href="../category/gallery/index.html" >Gallery</a>
+    			</li>
+    			<li class="cat-item cat-item-44"><a href="../category/music/index.html" >Music</a>
+    			</li>
+    			<li class="cat-item cat-item-1"><a href="../category/uncategorized/index.html" >Uncategorized</a>
+    			</li>
+    			<li class="cat-item cat-item-63"><a href="../category/updates/index.html" >Updates</a>
+    			</li>
+    			<li class="cat-item cat-item-49"><a href="../category/vacation/index.html" >Vacation</a>
+    			</li>
+    		</ul>
+    	</article>
+    	<article class="col-sm-3">
+    		<strong class="title">Our location</strong>
+    		<address class="row ">
+    			<div class="col-xs-2"><i class="fa fa-map-marker"></i></div>
+    			<div class="col-xs-10">
+    				69-135 Brompton Road<br />Knightsbridge<br />SW1X 0NA<br />United Kingdom‎							</div>
+    			</address>
+    			<address class="row ">
+    				<div class="col-xs-2"><i class="fa fa-phone"></i></div>
+    				<div class="col-xs-10">+44 55566888</div>
+    			</address>
+
+    			<address class="row ">
+    				<div class="col-xs-2"><i class="fa fa-print"></i></div>
+    				<div class="col-xs-10">+44 55566999</div>
+    			</address>
+
+    			<address class="row ">
+    				<div class="col-xs-2"><i class="fa fa-envelope-o"></i></div>
+    				<div class="col-xs-10"><a href="mailto:hello@humbleshop.com">hello@humbleshop.com</a></div>
+    			</address>
+    		</article>
+
+
+    	</section>
+
+    	<section class="row doubleline">
+    		<div class="col-sm-6 clearfix">
+
+    			<!-- Payment Method -->
+    			<div class="payment amex"></div><div class="payment mastercard"></div><div class="payment visa"></div><div class="payment paypal"></div>				
+    		</div>
+    		<div class="col-sm-6 currency">
+
+    			<p>Recommended hosting for <a title="Recommended Woocommerce Hosting" href="https://www.webfaction.com/?aid=11165" target="_blank">Woocommerce</a>.</p>
+    		</div>
+    	</section>
+
+    	<section class="row social">
+
+    		<div class="col-sm-6">&copy;  <a href="../index.html" title="HumbleShop" rel="home">HumbleShop</a> <small>/ Just another Woocommerce shop</small></div>
+    		<div class="col-sm-6 channel">
+    			<ul>
+
+    				<!-- Social Networks -->
+    				<li><a href="http://facebook.com/envato" target="_blank"><i class="fa fa-facebook"></i></a></li>					<li><a href="http://twitter.com/envato" target="_blank"><i class="fa fa-twitter"></i></a></li>					<li><a href="http://plus.google.com/107285294994146126204" target="_blank"><i class="fa fa-google-plus"></i></a></li>					<li><a href="http://pinterest.com/humblespace" target="_blank"><i class="fa fa-pinterest"></i></a></li>										<li><a href="http://instagram.com/herschel" target="_blank"><i class="fa fa-instagram"></i></a></li>
+    			</ul>	
+    		</div>
+
+    	</section>
+    </div>
 </footer>
 
 <script type='text/javascript' src='../wp-content/plugins/contact-form-7/includes/js/jquery.form.mind03d.js?ver=3.51.0-2014.06.20'></script>
