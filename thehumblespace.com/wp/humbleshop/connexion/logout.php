@@ -1,10 +1,10 @@
 <?php
-setcookie('auth','',time()-3600);
+setcookie('auth', NULL, -1);
 session_start();
-if(session_destroy())
-header("Location: index.php");
+session_unset ();
+if(session_destroy()){
+header("Location: ../home/index.php");}
 ?>
-
 
 
 

@@ -1,0 +1,50 @@
+<style type="text/css">
+         @import url(http://fonts.googleapis.com/css?family=Bangers|Lato);			
+         .wf-active {font-family: 'Lato',serif;}
+         .wf-active .logo {
+         font-family: 'Bangers', serif;
+         font-size: ;
+         }
+         body {
+         font-family: ; 
+         font-size: ;
+         color: ;
+         font-variant: ;
+         font-weight: ;
+         letter-spacing: ;
+         line-height: ;
+         text-decoration: ;
+         text-transform: ;
+         background-color: ;
+         background-repeat: ;
+         background-attachment: ;
+         background-position: left top;
+         background-image: url(../wp-content/uploads/2013/01/px_by_Gre3g.png); 	}
+         h1,h2,h3,h4,h5,h6 { font-family: ;  }
+         .well {border-color: ; }
+         .btn.theme {border-color : #E55137;}
+         a, .product_list_widget li a, flex-caption {color: }
+         .pagination>.active>a, {position: relative; color: white} {color: }
+         a:hover, footer a:hover, footer a.active, aside a, em.on, .theme, .page h5, .page h2:not(.maskprice), .page .woocommerce h3, a.theme , .product .sidebar h5, #comments strong {color: #E55137}
+         .feat .nav-pills > .active > a, .feat .nav-pills > .active > a:hover, .product .nav-pills > .active > a, .product .nav-pills > .active > a:hover, button.theme, .share a, .flex-control-paging li a.flex-active, .horizontal-nav li a:hover, .horizontal-nav li li a:hover, .btn.theme, .btn-theme, section.single .onsale, .view-thumb .onsale, .pagination>.active>a, .pagination>.active>a:hover { background: #E55137 }
+         .container, .horizontal-nav ul, h6.subhead strong { background: #ffffff }
+         button.theme, .share a, .share a:hover, .horizontal-nav li a:hover, .btn.theme, .btn-theme, section.single .onsale, .view-thumb .onsale { color: #ffffff }
+         header.prime, .sidebar .tags span, .comments article:hover { background: #F2F2F2 }
+         .promo img {border: 1px solid #DDDDDD}
+         .horizontal-nav ul, .blog article, .archive article, .search article, .line, hr, .product .sidebar li {border-top: 1px solid #DDDDDD;}
+         .product .tab-content.sideline { border-left: 1px solid #DDDDDD }
+         header.prime, .horizontal-nav ul, .gmap  { border-bottom: 1px solid #DDDDDD }
+         .price_slider_amount button[type="submit"] {color: #E55137 ;}
+         footer, footer .container {
+         background-color: ;
+         background-repeat: ;
+         background-attachment: ;
+         background-position: ;
+         background-image: url();
+         color: #777777	}
+         footer a {color: #bbbbbb}
+         footer .doubleline { 
+         border-top:1px solid #333333; 
+         border-bottom: 1px solid #333333; 
+         }
+      </style>

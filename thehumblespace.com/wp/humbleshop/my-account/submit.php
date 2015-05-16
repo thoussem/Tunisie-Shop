@@ -1,5 +1,5 @@
 <?php
-include("conf.php");
+include("../connexion/conf.php");
 session_start();
 if (isset($_SESSION['login_user'])) {
     header("location: index2.php");
@@ -37,7 +37,7 @@ if (isset($_POST['seconnecter'])) {
         if (isset($_POST['rememberme'])) {
             setcookie('auth', $username, time() + 3600 * 24 * 3);
         }
-        header("location: ../homepage-with-carousel/index.php");
+        header("location: ../home/index.php");
     } else {
         $error = "* Le nom d'Utilisateur ou le Mot de passe est Incorrecte";
     }

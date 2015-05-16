@@ -1,3 +1,4 @@
+
 <?php 
 
 
@@ -5,7 +6,7 @@ if(!isset($_SESSION['panier'])){
 /* Initialisation du panier */ 
 $_SESSION['panier'] = array(); 
 /* Subdivision du panier */ 
-$_SESSION['panier']['id_article'] = array();
+$_SESSION['panier']['id_article'] = array(); 
 $_SESSION['panier']['nom'] = array(); 
 $_SESSION['panier']['srcimg'] = array(); 
 $_SESSION['panier']['qte'] = array(); 
@@ -25,15 +26,15 @@ function ajout($select)
         if(!verif_panier($select['id'])) 
         { 
             array_push($_SESSION['panier']['id_article'],$select['id']); 
-            array_push($_SESSION['panier']['nom'],$select['nom']); 
+            array_push($_SESSION['panier']['nom'],$select['nom']);
+            array_push($_SESSION['panier']['qte'],$select['qte']);
             array_push($_SESSION['panier']['srcimg'],$select['srcimg']); 
-            array_push($_SESSION['panier']['qte'],$select['qte']); 
             array_push($_SESSION['panier']['taille'],$select['taille']); 
             array_push($_SESSION['panier']['prix'],$select['prix']); 
             $ajout = true; 
         } 
         else 
-        {   
+        { 
             $ajout = modif_qte($select['id'],$select['qte']); 
         } 
     
@@ -64,10 +65,7 @@ function modif_qte($ref_article, $qte)
             { 
                 if($ref_article == $_SESSION['panier']['id_article'][$i]) 
                 { 
-                    if($qte==1){
-                    $_SESSION['panier']['qte'][$i] +=1; }
-                    else {
-                    $_SESSION['panier']['qte'][$i]  =$qte; }
+                    $_SESSION['panier']['qte'][$i] = $qte; 
                     $modifie = true; 
                 } 
             } 
