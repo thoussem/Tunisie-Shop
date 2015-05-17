@@ -16,7 +16,7 @@ $nom=$row['nom'];
 $prenom=$row['prenom'];
 $email=$row['email'];
 $titre=$row['titre'];
-setcookie('auth',$login_session,time()+3600*24*3);
+//setcookie('auth',$login_session,time()+3600*24*3);
 }
 
 ?>

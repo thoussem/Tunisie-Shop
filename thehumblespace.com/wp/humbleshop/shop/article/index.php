@@ -7,6 +7,7 @@
 
 	<?php
 	include("../../connexion/lock.php");
+    include "../../panier/panier.php";
 	if(isset($_GET["id"])){
 		$id=$_GET["id"];
 		$article_sql=mysqli_query($conn,"SELECT * FROM `articles` WHERE id='$id';");
@@ -56,72 +57,7 @@
 		<meta property="og:description" content="In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac ..." />
 		<meta property="og:image" content="http://thehumblespace.com/wp/humbleshop/wp-content/uploads/2013/01/328390_mrp_in_l.jpeg"/>
 
-		<style type="text/css">
-
-		@import url(http://fonts.googleapis.com/css?family=Bangers|Lato);			
-		.wf-active {font-family: 'Lato',serif;}
-
-		.wf-active .logo {
-			font-family: 'Bangers', serif;
-			font-size: ;
-		}
-
-		body {
-
-			font-family: ; 
-			font-size: ;
-			color: ;
-			font-variant: ;
-			font-weight: ;
-			letter-spacing: ;
-			line-height: ;
-			text-decoration: ;
-			text-transform: ;
-
-			background-color: ;
-			background-repeat: ;
-			background-attachment: ;
-			background-position: left top;
-			background-image: url(../../wp-content/uploads/2013/01/px_by_Gre3g.png); 	}
-
-
-			h1,h2,h3,h4,h5,h6 { font-family: ;  }
-
-			.well {border-color: ; }
-			.btn.theme {border-color : #E55137;}
-
-			a, .product_list_widget li a, flex-caption {color: }
-			.pagination>.active>a, {position: relative; color: white} {color: }
-
-			a:hover, footer a:hover, footer a.active, aside a, em.on, .theme, .page h5, .page h2:not(.maskprice), .page .woocommerce h3, a.theme , .product .sidebar h5, #comments strong {color: #E55137}
-			.feat .nav-pills > .active > a, .feat .nav-pills > .active > a:hover, .product .nav-pills > .active > a, .product .nav-pills > .active > a:hover, button.theme, .share a, .flex-control-paging li a.flex-active, .horizontal-nav li a:hover, .horizontal-nav li li a:hover, .btn.theme, .btn-theme, section.single .onsale, .view-thumb .onsale, .pagination>.active>a, .pagination>.active>a:hover { background: #E55137 }
-
-			.container, .horizontal-nav ul, h6.subhead strong { background: #ffffff }
-			button.theme, .share a, .share a:hover, .horizontal-nav li a:hover, .btn.theme, .btn-theme, section.single .onsale, .view-thumb .onsale { color: #ffffff }
-			header.prime, .sidebar .tags span, .comments article:hover { background: #F2F2F2 }
-
-			.promo img {border: 1px solid #DDDDDD}
-			.horizontal-nav ul, .blog article, .archive article, .search article, .line, hr, .product .sidebar li {border-top: 1px solid #DDDDDD;}
-			.product .tab-content.sideline { border-left: 1px solid #DDDDDD }
-			header.prime, .horizontal-nav ul, .gmap  { border-bottom: 1px solid #DDDDDD }
-			.price_slider_amount button[type="submit"] {color: #E55137 ;}
-
-			footer, footer .container {
-				background-color: ;
-				background-repeat: ;
-				background-attachment: ;
-				background-position: ;
-				background-image: url();
-				color: #777777	}
-				footer a {color: #bbbbbb}
-				footer .doubleline { 
-					border-top:1px solid #333333; 
-					border-bottom: 1px solid #333333; 
-				}
-
-
-
-				</style>
+		<link rel="stylesheet" href="../../style/style.css" type="text/css" media="screen" />
 				<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
 
 	<!--[if lt IE 9]>
@@ -138,102 +74,154 @@
     	<!-- TOPBAR -->
     	<!-- ====== -->
     	<div class="container welcome">
-    		<div class="row">
-    			<div class="pull-left greet">
-    				<span class="hidden-xs">Bienvenue</span> 					
-    				<span class="hidden-xs">client,</span> 
-    				<a href="../my-account/index.php">
-    					<?php
-    					if (isset($login_session)){
-    						echo $nom.' '.$prenom;
-    					}
-    					else {echo 'Connexion ou Créer un compte';}
-    					?>
-    				</a>
-
-    				&nbsp;&nbsp;
-
-    				<a href="logout.php">
-    					<?php
-    					if (isset($login_session)){
-    						echo "(Déconnexion)";}
-    						?>
-    					</a>
-
-
-    				</div>
-    				<div class="pull-right hscart text-right">
-
-    					<!-- Cart Updates -->
-    					<div class="counter">
-    						<a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>
-    							<span class="hidden-xs">Total</span> </a> : 
-    							<span class="theme"><span class="amount">0.00 DT</span></span>
-    						</div>
-
-    						<!-- Bubble Cart Item -->
-    						<div class="cartbubble">
-
-    							<div class="arrow-box">
-
-
-
-    								<div class="clearfix text-center">
-    									Aucun produit dans le panier. <br>
-    									<a href="javascript:void(0)" id="closeit">Fermer</a>
-    								</div>
-
-
-    							</div>
-
-    						</div>
-    					</div>
-    				</div>	
-    			</div>
+   <div class="row">
+      <div class="pull-left greet">
+         <span class="hidden-xs">Bienvenue</span>                   
+         <span class="hidden-xs">client,</span> 
+         <a href="../../my-account/index.php">
+         <?php
+            if (isset($login_session)){
+                echo $nom.' '.$prenom;
+            }
+            else {echo 'Connexion ou Créer un compte';}
+            ?>
+         </a>
+         &nbsp;&nbsp;
+         <a href="../../connexion/logout.php">
+         <?php
+            if (isset($login_session)){
+                echo "(Déconnexion)";}
+                ?>
+         </a>
+      </div>
+      <div class="pull-right hscart text-right">
+         <!-- Cart Updates -->
+         <div class="counter">
+            <a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>
+            <span class="hidden-xs">Total</span> </a> : 
+            <span class="theme"><span class="amount"><?php echo montant_panier(); ?> DT</span></span>
+         </div>
+         <!-- Bubble Cart Item -->
+         <div class="cartbubble">
+            <div class="arrow-box">
+               <?php if(!isset($_SESSION['panier'])):?>
+               <div class="clearfix text-center">
+                  Aucun produit dans le panier. <br>
+                  <a href="javascript:void(0)" id="closeit">Fermer</a>
+               </div>
+               <?php else:?>
+               <?php 
+                  $nb_art = count($_SESSION['panier']['id_article']);
+                  for($i = 0; $i < $nb_art; $i++) 
+                  { 
+                  
+                   echo'
+                   <div class="row">
+                   <div class="col-xs-8">
+                   <small>
+                   '.$_SESSION['panier']['qte'][$i].' x   
+                  
+                   <a href="index.php?id='.$_SESSION['panier']['id_article'][$i].'&amp;nom='.$_SESSION['panier']['nom'][$i].'">'.$_SESSION['panier']['nom'][$i].'</a> 
+                  
+                   </small>
+                   <br>
+                   <small>
+                   </small>
+                   </div>
+                  
+                   <div class="theme col-xs-4 text-right">
+                   <span class="amount">'.$_SESSION['panier']['prix'][$i].'</span>                             </div>
+                   </div>';}
+                   ?>
+               <hr>
+               <div class="clearfix">
+                  TOTAL <span class="theme pull-right"><span class="amount"><?php echo montant_panier(); ?> DT</span></span>
+               </div>
+               <hr>
+               <div class="clearfix buttons">
+                  <a href="javascript:void(0)" id="closeit">Fermer</a>
+                  <a href="../../checkout" class="btn btn-xs theme pull-right">Checkout</a>
+               </div>
+               <?php endif;?>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 
 
     			<!-- ================= -->
     			<!-- HEADER & BRANDING -->
     			<!-- ================= -->
 
-<?php include"../header/header.php";?>
+<div class="container head">
+   <div class="row">
+      <div class="col-xs-12 clearfix">
+         <div class="top row">
+            <div class="col-sm-8 logo image">
+               <a href="../../home/index.php" title="HumbleShop" rel="home">
+               <img src="../../wp-content/uploads/2013/01/highreslogo-300x75.png"  alt="" class="img-responsive" />
+               </a>
+            </div>
+            <div class="searchcart col-sm-4">
+               <form role="search" method="get" id="searchform" action="" class="topsearch form-inline">
+                  <div class="form-group">
+                     <input type="text" value="" name="s" id="s" placeholder="Search" class="top-search input-text" />
+                     <button type="submit" id="searchsubmit" value="Search" class="btn"><i class="fa fa-search"></i></button>
+                     <input type="hidden" name="post_type" value="product" />
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 
     			<!-- ================ -->
     			<!-- MAIN NAV SECTION -->
     			<!-- ================ -->
 
     			<nav class="container">
-    				<div class="row">		
-    					<div class="col-12">
-    						<nav class="horizontal-nav full-width">
-    							<ul id="nav" class="nav hidden-xs"><li id="menu-item-218" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-218"><a href="index.php">Acceuil</a>
-    								<ul class="nav">
-    									<li id="menu-item-217" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-214 current_page_item menu-item-217"><a href="index.php">Homepage Carousel</a></li>
-    								</ul>
-    							</li>
-    							<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25"><a href="../index.php">BOUTIQUE</a>
-    								<ul class="nav">
-    									<li id="menu-item-482" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-482"><a href="../wide-shop/index.html">Wide Shop</a></li>
-    									<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-206"><a href="../shop/red-garage/index.html">Product</a></li>
-    								</ul>
-    							</li>
-    							<li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-16"><a href="../my-account/index.php">MON COMPTE</a>
-    								<ul class="nav">
-    									<li id="menu-item-489" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-489"><a href="../checkout/index.php">Checkout</a></li>
-    									<li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24"><a href="../cart/index.php">Chariot</a></li>
-    								</ul>
-    							</li>
-    							<li id="menu-item-194" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-194"><a href="../page-left-sidebar/index.html">Page</a>
-    								<ul class="nav">
-    									<li id="menu-item-195" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-195"><a href="../page-right-sidebar/index.html">Page Right Sidebar</a></li>
-    								</ul>
-    							</li>
-    							<li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="../blog/index.html">Blog</a></li>
-    							<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="../contact-us/index.html">Contact</a></li>
-    						</ul>				</nav>
-    					</div>
-    				</div>
-    			</nav>
+   <div class="row">
+      <div class="col-12">
+         <nav class="horizontal-nav full-width">
+            <ul id="nav" class="nav hidden-xs">
+               <li id="menu-item-218" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-218">
+                  <a href="../../home/index.php">Acceuil</a>
+               </li>
+               <li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25">
+                  <a href="../../shop/index.php?type=">BOUTIQUE</a>
+                  <ul class="nav">
+                     <li id="menu-item-482" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-482">
+                        <a href="../../shop/index.php?type=h">Homme</a>
+                     </li>
+                     <li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-206">
+                        <a href="../../shop/index.php?type=f">Femme</a>
+                     </li>
+                     <li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-206">
+                        <a href="../../shop/index.php?type=e">Enfant</a>
+                     </li>
+                  </ul>
+               </li>
+               <li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-16">
+                  <a href="../../my-account/index.php">MON COMPTE</a>
+                  <ul class="nav">
+                     <li id="menu-item-489" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-489">
+                        <a href="../../checkout/index.php">Checkout</a>
+                     </li>
+                     <li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24">
+                        <a href="../../cart/index.php">Chariot</a>
+                     </li>
+                  </ul>
+               </li>
+               <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44">
+                  <a href="../../contact-us/index.php">Contact</a>
+               </li>
+            </ul>
+         </nav>
+      </div>
+   </div>
+</nav>
     			<!-- ============== -->
     			<!-- SINGLE SECTION -->
     			<!-- ============== -->

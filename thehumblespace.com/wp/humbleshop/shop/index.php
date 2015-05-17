@@ -21,7 +21,7 @@
         $article['srcimg']=$row['srcimg'];
         $article['prix']=$row['prix'];
         ajout($article);
-        
+        var_dump($_SESSION['panier']); 
     }
 
     ?>

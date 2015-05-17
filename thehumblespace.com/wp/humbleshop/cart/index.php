@@ -112,9 +112,10 @@
                                     </tr>
                                  </thead>
                                  <tbody>
+                                  <a  href="index.php?supp=b">suppp</a>
                                     <?php 
                                        $nb_art = count($_SESSION['panier']['id_article']);
-                                      
+                                        
                                        for($i = 0; $i < $nb_art; $i++) 
                                        { 
                                         $id=$_SESSION['panier']['id_article'][$i];
