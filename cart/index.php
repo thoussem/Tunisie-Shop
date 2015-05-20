@@ -1,46 +1,40 @@
 <!DOCTYPE html>
 <html lang="en-US">
-   <!-- Mirrored from thehumblespace.com/wp/humbleshop/cart/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Apr 2015 22:17:24 GMT -->
-   <!-- Added by HTTrack -->
    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-   <!-- /Added by HTTrack -->
    <head>
       <?php
          include("../connexion/lock.php");
          include("../panier/panier.php");
          if(isset($_GET['id'])){
-                $id=$_GET['id'];
-                supprim_article($id);
-            }
-            if(isset($_GET['supp'])){
-                
-                vider_panier();
-            }
-
-            function maj_chariot(){
-              $nb_articles = count($_SESSION['panier']['id_article']); 
-              for($i = 0; $i < $nb_articles; $i++) 
-                { 
-                    $_SESSION['panier']['qte'][$i] =$_POST['qte'.$_SESSION['panier']['id_article'][$i]]; 
-                    
-            } 
-            }
-
-            if(isset($_POST['maj_chariot'])){
-              maj_chariot();
-            }
+           $id=$_GET['id'];
+           supprim_article($id);
+         }
+         if(isset($_GET['supp'])){
          
-            
+           vider_panier();
+         }
+         
+         function maj_chariot(){
+           $nb_articles = count($_SESSION['panier']['id_article']); 
+           for($i = 0; $i < $nb_articles; $i++) 
+           { 
+             $_SESSION['panier']['qte'][$i] =$_POST['qte'.$_SESSION['panier']['id_article'][$i]];
+             $_SESSION['panier']['taille'][$i]=$_POST['taille'.$_SESSION['panier']['id_article'][$i]];
+         
+           } 
+         }
+         
+         if(isset($_POST['maj_chariot'])){
+           maj_chariot();
+         }
+         
+         
          ?>
       <meta charset="UTF-8" />
-      <!--[if IE]>
-      <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-      <![endif]-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Panier | TunisieShop</title>
       <link rel="profile" href="http://gmpg.org/xfn/11" />
       <link rel="pingback" href="../xmlrpc.php" />
-      <!--Favicon-->
       <link rel="icon" href="../wp-content/uploads/2013/01/hsfavicon.png">
       <meta name='robots' content='noindex,follow' />
       <link rel="alternate" type="application/rss+xml" title="HumbleShop &raquo; Feed" href="../feed/index.html" />
@@ -101,16 +95,12 @@
                   <div class="col-xs-12">
                      <div class="content clearfix">
                         <div class="woocommerce">
-
-
-
                            <?php if(count($_SESSION['panier']['id_article'])==0): ?>
                            <p class="cart-empty">Votre panier est actuellement vide.</p>
                            <p class="return-to-shop">
                               <a class="button wc-backward" href="../shop/index.php?type=&amp;categ=">Retour à la boutique</a>
                            </p>
                            <?php else : ?>
-
                            <form action="" method="post">
                               <table class="shop_table cart table" cellspacing="0">
                                  <thead>
@@ -125,41 +115,64 @@
                                     </tr>
                                  </thead>
                                  <tbody>
-                                  <a  href="index.php?supp=b">suppp</a>
+                                    <a  href="index.php?supp=b">suppp</a>
                                     <?php 
                                        $nb_art = count($_SESSION['panier']['id_article']);
-                                        
+                                       
                                        for($i = 0; $i < $nb_art; $i++) 
                                        { 
-                                        
+                                         $s_selected="";
+                                         $m_selected="";
+                                         $l_selected="";
+                                         $xl_selected="";
+                                         $no_selected="";
                                        
-                                        echo '
-                                        <tr class="cart_item">
+                                         echo '
+                                         <tr class="cart_item">
                                        
-                                        <td class="product-remove">
-                                        <a href="index.php?id='.$_SESSION['panier']['id_article'][$i].'" class="remove" title="Remove this item">×</a>                  </td>
+                                         <td class="product-remove">
+                                         <a href="index.php?id='.$_SESSION['panier']['id_article'][$i].'" class="remove" title="Remove this item">×</a>                  </td>
                                        
-                                        <td class="product-thumbnail">
-                                        <a href="../shop/article/index.php?id='.$_SESSION['panier']['id_article'][$i].'&amp;nom='.$_SESSION['panier']['nom'][$i].'">
-                                        <img width="100" height="100" src="../wp-content/uploads/2013/01/'.$_SESSION['panier']['srcimg'][$i].'" class="attachment-shop_thumbnail wp-post-image" alt="sample"></a>                  </td>
+                                         <td class="product-thumbnail">
+                                         <a href="../shop/article/index.php?id='.$_SESSION['panier']['id_article'][$i].'&amp;nom='.$_SESSION['panier']['nom'][$i].'">
+                                         <img width="100" height="100" src="../wp-content/uploads/2013/01/'.$_SESSION['panier']['srcimg'][$i].'" class="attachment-shop_thumbnail wp-post-image" alt="sample"></a>                  </td>
                                        
-                                        <td class="product-name">
-                                        <a href="../shop/shirt-with-attributes/index.php?id='.$_SESSION['panier']['id_article'][$i].'&amp;nom='.$_SESSION['panier']['nom'][$i].'">'.$_SESSION['panier']['nom'][$i].'</a>                  </td>
+                                         <td class="product-name">
+                                         <a href="../shop/shirt-with-attributes/index.php?id='.$_SESSION['panier']['id_article'][$i].'&amp;nom='.$_SESSION['panier']['nom'][$i].'">'.$_SESSION['panier']['nom'][$i].'</a>                  </td>
                                        
-                                        <td class="product-price">
-                                        <span class="amount">'.$_SESSION['panier']['prix'][$i].'</span>                 </td>
+                                         <td class="product-price">
+                                         <span class="amount">'.$_SESSION['panier']['prix'][$i].'</span>                 </td>
                                        
-                                        <td class="product-quantity">
-                                        <div class="quantity"><input type="number" step="1" min="0" name="qte'.$_SESSION['panier']['id_article'][$i].'" value="'.$_SESSION['panier']['qte'][$i].'" title="Qty" class="input-text qty text" size="4"></div>
-                                        </td>
+                                         <td class="product-quantity">
+                                         <div class="quantity"><input type="number" step="1" min="0" name="qte'.$_SESSION['panier']['id_article'][$i].'" value="'.$_SESSION['panier']['qte'][$i].'" title="Qty" class="input-text qty text" size="4"></div>
+                                         </td>
                                        
-                                        <td class="product-taille">
-                                        <div class="quantity"><input type="number" step="1" min="0" name="cart[a97da629b098b75c294dffdc3e463904][qty]" value="1" title="Qty" class="input-text qty text" size="4"></div>
-                                        </td>
+                                         <td class="product-taille">
+                                         <div class="quantity">
+                                         <select class="form-control" id="pa_size" name=taille'.$_SESSION['panier']['id_article'][$i].'>';
+                                         if($_SESSION['panier']['taille'][$i]=="S")
+                                           {$s_selected="selected='selected'";}
+                                         elseif($_SESSION['panier']['taille'][$i]=="M")
+                                           {$m_selected="selected='selected'";}
+                                         elseif($_SESSION['panier']['taille'][$i]=="L")
+                                           {$l_selected="selected='selected'";}
+                                         elseif($_SESSION['panier']['taille'][$i]=="XL")
+                                           {$xl_selected="selected='selected'";}
+                                         else
+                                           {$no_selected="selected='selected'";}
+                                         echo '
+                                         <option value="no" '.$no_selected.'>Choisir la taille…</option>
+                                         <option value="S" '.$s_selected.' class="attached enabled">Small</option>
+                                         <option value="M" '.$m_selected.' class="attached enabled">Medium</option>
+                                         <option value="L" '.$l_selected.' class="attached enabled">Large</option>
+                                         <option value="XL" '.$xl_selected.' class="attached enabled">Extra Large</option>
+                                         </select>
+                                         </div>
+                                         </td>
                                        
-                                        <td class="product-subtotal">
-                                        <span class="amount">£199.00</span>                 </td>
-                                        </tr>';
+                                         <td class="product-subtotal">
+                                         <span class="amount">'.$_SESSION['panier']['prix'][$i]*$_SESSION['panier']['qte'][$i].' DT</span>                 </td>
+                                         </tr>';
                                        } 
                                        
                                        ?>
@@ -195,107 +208,7 @@
       <!-- ============== -->
       <!-- FOOTER SECTION -->
       <!-- ============== -->
-      <footer>
-         <div class="container">
-            <section class="row foot">
-               <article id="nav_menu-2" class="col-sm-3 widget_nav_menu">
-                  <strong class="title">Quick Links</strong>
-                  <div class="menu-footer-container">
-                     <ul id="menu-footer" class="menu">
-                        <li id="menu-item-137" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137"><a href="#">About Us</a></li>
-                        <li id="menu-item-138" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-138"><a href="#">Privacy</a></li>
-                        <li id="menu-item-139" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-139"><a href="#">Returns Policies</a></li>
-                        <li id="menu-item-140" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-140"><a href="#">Feedback</a></li>
-                        <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142"><a href="../blog/index.html">Blog</a></li>
-                        <li id="menu-item-141" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-141"><a href="../contact-us/index.html">Contact</a></li>
-                     </ul>
-                  </div>
-               </article>
-               <article id="recent-posts-5" class="col-sm-3 widget_recent_entries">
-                  <strong class="title">Latest Posts</strong>       
-                  <ul>
-                     <li>
-                        <a href="../demo-now-running-on-benny/index.html">Demo now running on &#8216;Benny&#8217;!</a>
-                        <span class="post-date">September 5, 2014</span>
-                     </li>
-                     <li>
-                        <a href="../theme-updated/index.html">Theme Updated!</a>
-                        <span class="post-date">February 12, 2014</span>
-                     </li>
-                     <li>
-                        <a href="../sample-audio-format/index.html">Sample Audio Format</a>
-                        <span class="post-date">January 11, 2013</span>
-                     </li>
-                     <li>
-                        <a href="../live-your-life/index.html">Live Your Life</a>
-                        <span class="post-date">January 10, 2013</span>
-                     </li>
-                  </ul>
-               </article>
-               <article id="categories-4" class="col-sm-3 widget_categories">
-                  <strong class="title">Categories</strong>     
-                  <ul>
-                     <li class="cat-item cat-item-47"><a href="../category/gallery/index.html" >Gallery</a>
-                     </li>
-                     <li class="cat-item cat-item-44"><a href="../category/music/index.html" >Music</a>
-                     </li>
-                     <li class="cat-item cat-item-1"><a href="../category/uncategorized/index.html" >Uncategorized</a>
-                     </li>
-                     <li class="cat-item cat-item-63"><a href="../category/updates/index.html" >Updates</a>
-                     </li>
-                     <li class="cat-item cat-item-49"><a href="../category/vacation/index.html" >Vacation</a>
-                     </li>
-                  </ul>
-               </article>
-               <article class="col-sm-3">
-                  <strong class="title">Our location</strong>
-                  <address class="row ">
-                     <div class="col-xs-2"><i class="fa fa-map-marker"></i></div>
-                     <div class="col-xs-10">
-                        69-135 Brompton Road<br />Knightsbridge<br />SW1X 0NA<br />United Kingdom‎                          
-                     </div>
-                  </address>
-                  <address class="row ">
-                     <div class="col-xs-2"><i class="fa fa-phone"></i></div>
-                     <div class="col-xs-10">+44 55566888</div>
-                  </address>
-                  <address class="row ">
-                     <div class="col-xs-2"><i class="fa fa-print"></i></div>
-                     <div class="col-xs-10">+44 55566999</div>
-                  </address>
-                  <address class="row ">
-                     <div class="col-xs-2"><i class="fa fa-envelope-o"></i></div>
-                     <div class="col-xs-10"><a href="mailto:hello@humbleshop.com">hello@humbleshop.com</a></div>
-                  </address>
-               </article>
-            </section>
-            <section class="row doubleline">
-               <div class="col-sm-6 clearfix">
-                  <!-- Payment Method -->
-                  <div class="payment amex"></div>
-                  <div class="payment mastercard"></div>
-                  <div class="payment visa"></div>
-                  <div class="payment paypal"></div>
-               </div>
-               <div class="col-sm-6 currency">
-                  <p>Recommended hosting for <a title="Recommended Woocommerce Hosting" href="https://www.webfaction.com/?aid=11165" target="_blank">Woocommerce</a>.</p>
-               </div>
-            </section>
-            <section class="row social">
-               <div class="col-sm-6">&copy;  <a href="../index.html" title="HumbleShop" rel="home">HumbleShop</a> <small>/ Just another Woocommerce shop</small></div>
-               <div class="col-sm-6 channel">
-                  <ul>
-                     <!-- Social Networks -->
-                     <li><a href="http://facebook.com/envato" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                     <li><a href="http://twitter.com/envato" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                     <li><a href="http://plus.google.com/107285294994146126204" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                     <li><a href="http://pinterest.com/humblespace" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-                     <li><a href="http://instagram.com/herschel" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                  </ul>
-               </div>
-            </section>
-         </div>
-      </footer>
+      <?php include"../footer/footer.php";?>
       <script type='text/javascript' src='../wp-content/plugins/contact-form-7/includes/js/jquery.form.mind03d.js?ver=3.51.0-2014.06.20'></script>
       <script type='text/javascript'>
          /* <![CDATA[ */
