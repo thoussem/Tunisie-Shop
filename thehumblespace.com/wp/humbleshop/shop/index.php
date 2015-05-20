@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from thehumblespace.com/wp/humbleshop/shop/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Apr 2015 22:17:10 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
     <?php
 
@@ -21,7 +20,9 @@
         $article['srcimg']=$row['srcimg'];
         $article['prix']=$row['prix'];
         ajout($article);
-        var_dump($_SESSION['panier']); 
+        
+        header("Location:index.php?article=".$row['nom']."&ajout='success'& type=".$_GET['type']."categ=".$_GET['categ']."");
+        
     }
 
     ?>
@@ -42,10 +43,10 @@
 
     
     <meta charset="UTF-8" />
-    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Products | HumbleShop</title>
+    <title>Boutique | TunisieShop</title>
 
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="pingback" href="../xmlrpc.php" />
@@ -113,7 +114,7 @@
 
                             <div class="row">
                              <header class="col-xs-12 prime">
-                              <h3>Shop</h3>
+                              <h3>Boutique</h3>
                           </header>
                       </div>
 
@@ -177,7 +178,7 @@
                           <div class="clear"></div>
 
                       </div>
-
+                      
                       <h3><a href="#ho" onclick="showhide('h');" onmouseover="showhide('h');" id="ho">Homme</a></h3>
                       <ul class="current" id="h" <?php $type=$_GET['type']; if($type=='h') {echo 'style="display:block"';} else {echo 'style="display:none"';} ?>>
                         
@@ -185,7 +186,7 @@
         
                             
                             <li id="menuItemData_392502" class="  ">
-                                <a href="http://www.zara.com/tn/fr/homme/vestes-c392502.html">
+                                <a href="index.php?type=h&amp;categ=veste">
                                     Vestes
                                 </a>
                                  
@@ -194,7 +195,7 @@
                     
                             
                             <li id="menuItemData_726501" class="  ">
-                                <a href="http://www.zara.com/tn/fr/homme/blazers-c726501.html">
+                                <a href="index.php?type=h&amp;categ=blazer">
                                     Blazers
                                 </a>
                                  
@@ -203,7 +204,7 @@
 
                             
                             <li id="menuItemData_358056" class="  ">
-                                <a href="http://www.zara.com/tn/fr/homme/pantalons-c358056.html">
+                                <a href="index.php?type=h&amp;categ=pantalon">
                                     Pantalons
                                 </a>
                                  
@@ -211,7 +212,7 @@
                         
                             
                             <li id="menuItemData_368001" class="  ">
-                                <a href="http://www.zara.com/tn/fr/homme/jeans-c368001.html">
+                                <a href="index.php?type=h&amp;categ=jean">
                                     Jeans
                                 </a>
                                  
@@ -219,7 +220,7 @@
                         
                          
                             <li id="menuItemData_358053" class="  ">
-                                <a href="http://www.zara.com/tn/fr/homme/chemises-c358053.html">
+                                <a href="index.php?type=h&amp;categ=chemise">
                                     Chemises
                                 </a>
                                  
@@ -228,7 +229,7 @@
                     
                             
                             <li id="menuItemData_358054" class="  ">
-                                <a href="http://www.zara.com/tn/fr/homme/t-shirts-c358054.html">
+                                <a href="index.php?type=h&amp;categ=t-shirt">
                                     T-shirts
                                 </a>
                                  
@@ -237,34 +238,18 @@
                     
                             
                             <li id="menuItemData_715535" class="  ">
-                                <a href="http://www.zara.com/tn/fr/homme/polos-c715535.html">
+                                <a href="index.php?type=h&amp;categ=polo">
                                     Polos
                                 </a>
                                  
                             </li>
                         
                     
-                            
-                            <li id="menuItemData_364002" class="  ">
-                                <a href="http://www.zara.com/tn/fr/homme/sweat-shirts-c364002.html">
-                                    Sweat-shirts
-                                </a>
-                                 
-                            </li>
-                        
-                    
-                            
-                            <li id="menuItemData_358055" class="  ">
-                                <a href="http://www.zara.com/tn/fr/homme/pull-c358055.html">
-                                    Pull
-                                </a>
-                                 
-                            </li>
                         
                     
                             
                             <li id="menuItemData_358057" class="  ">
-                                <a href="http://www.zara.com/tn/fr/homme/chaussures-c358057.html">
+                                <a href="index.php?type=h&amp;categ=chaussure">
                                     Chaussures
                                 </a>
                                  
@@ -273,7 +258,7 @@
                     
                             
                             <li id="menuItemData_358066" class="  ">
-                                <a href="http://www.zara.com/tn/fr/homme/sacs-c358066.html">
+                                <a href="index.php?type=h&amp;categ=sac">
                                     Sacs
                                 </a>
                                  
@@ -282,7 +267,7 @@
                     
                             
                             <li id="menuItemData_358070" class="  ">
-                                <a href="http://www.zara.com/tn/fr/homme/accessoires-c358070.html">
+                                <a href="index.php?type=h&amp;categ=access">
                                     Accessoires
                                 </a>
                                  
@@ -302,7 +287,7 @@
         
                             
                             <li id="menuItemData_392502" class="  ">
-                                <a href="http://www.zara.com/tn/fr/homme/vestes-c392502.html">
+                                <a href="index.php?id='.$row['id'].'&amp;type='.$type.'&amp;categ='.$categ.'">
                                     Vestes
                                 </a>
                                  
@@ -412,7 +397,7 @@
                         
                     </ul>
                         <h3><a href="#en" onclick="showhide('e');" onmouseover="showhide('e');" id="en">Enfant</a></h3>
-                      <ul class="current" <?php $type=$_GET['type']; if($type=='e') {echo 'style="display:block"';} else {echo 'style="display:none"';} ?> >
+                      <ul class="current" id="e" <?php $type=$_GET['type']; if($type=='e') {echo 'style="display:block"';} else {echo 'style="display:none"';} ?> >
                         
                     
         
@@ -537,6 +522,15 @@
 
     <div class="col-sm-8">
 
+         <?php if(isset($_GET['ajout'])):?>
+         <div class="row shoptop">
+        <div class="woocommerce-message alert alert-success text-left">
+          <a href="http://thehumblespace.com/wp/humbleshop/cart/" class="button wc-forward">Voir Panier</a>
+          "<?php echo $_GET['article']; ?>" a été ajouté à votre panier.
+        </div>
+        </div>
+        <?php endif ;?>
+
 				
 <!-- Subcat -->
 <div class="row subnav">
@@ -547,30 +541,26 @@
 <div id="products" class="products row">
 
    <?php
-   if(isset($_GET['page'])){
-
-    $page=$_GET['page'];
-
-    $deb=$page*9+$page;
-    $fin=$page*9+$page+8;
-}
-else
-    {	$page=0;
-        $deb=1;
-        $fin=9;
-
-    }
+   
 
 
 
-    $ses_sql=mysqli_query($conn,"SELECT * FROM `articles` WHERE id>='$deb' and id<='$fin';");
+    
 
-    if(isset($_GET['type']))
-    {
+    $ses_sql=mysqli_query($conn,"SELECT * FROM `articles`;");
+
         $type=$_GET['type'];
-        $ses_sql=mysqli_query($conn,"SELECT * FROM `articles` WHERE id>='$deb' and id<='$fin' and type='$type';");
+        $categ=$_GET['categ'];
+    
+    if($_GET['type']!='' && $_GET['categ']!='')
+    {  
+        $ses_sql=mysqli_query($conn,"SELECT * FROM `articles`,`categorie` WHERE type='$type' and categorie.libelle='$categ' and articles.id=categorie.idarticle;");   
+        }
+    else{
+        if($_GET['type']!=''){
+        $ses_sql=mysqli_query($conn,"SELECT * FROM `articles` WHERE type='$type';");}
     }
-
+        
     while($row=mysqli_fetch_array($ses_sql,MYSQLI_ASSOC)){
         echo '
         <article class="product col-sm-4"> 
@@ -587,7 +577,7 @@ else
         <p>'.$row['description'].'</p>                   
         <a href="article/index.php?id='.$row['id'].'&amp;nom='.$row['nom'].'" class="btn btn-sm custom">Voir</a> 
         <input type="hidden" name="add-to-cart" value="107" />
-        <a href="index.php?id='.$row['id'].'&amp;type='.$type.'" class="btn btn-sm custom">Acheter</a> 
+        <a href="index.php?id='.$row['id'].'&amp;type='.$type.'&amp;categ='.$categ.'" class="btn btn-sm custom">Acheter</a> 
 
 
         </form>

@@ -61,7 +61,7 @@
 
 <section class="row social">
 
- <div class="col-sm-6">&copy;  <a href="../index.html" title="HumbleShop" rel="home">TunisieShop</a></div>
+ <div class="col-sm-6">&copy;  <a href="../home/index.php" title="HumbleShop" rel="home">TunisieShop</a></div>
  <div class="col-sm-6 channel">
   <ul>
 

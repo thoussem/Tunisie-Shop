@@ -8,10 +8,11 @@ $_SESSION['panier'] = array();
 /* Subdivision du panier */ 
 $_SESSION['panier']['id_article'] = array(); 
 $_SESSION['panier']['nom'] = array(); 
-$_SESSION['panier']['srcimg'] = array(); 
 $_SESSION['panier']['qte'] = array(); 
+$_SESSION['panier']['srcimg'] = array(); 
 $_SESSION['panier']['taille'] = array(); 
-$_SESSION['panier']['prix'] = array(); }
+$_SESSION['panier']['prix'] = array(); 
+}
 
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */ 
@@ -28,14 +29,14 @@ function ajout($select)
             array_push($_SESSION['panier']['id_article'],$select['id']); 
             array_push($_SESSION['panier']['nom'],$select['nom']);
             array_push($_SESSION['panier']['qte'],$select['qte']);
-            array_push($_SESSION['panier']['srcimg'],$select['srcimg']); 
+            array_push($_SESSION['panier']['srcimg'],$select['srcimg']);
             array_push($_SESSION['panier']['taille'],$select['taille']); 
             array_push($_SESSION['panier']['prix'],$select['prix']); 
             $ajout = true; 
         } 
         else 
         { 
-            $ajout = modif_qte($select['id'],$select['qte']); 
+            $ajout = inc_qte($select['id'],$select['qte']); 
         } 
     
     return $ajout; 
@@ -51,6 +52,29 @@ function ajout($select)
 *                               "absent" si l'article est absent du panier, 
 *                               "qte_ok" si la quantité n'est pas modifiée car déjà correctement enregistrée. 
 */ 
+
+function inc_qte($ref_article) 
+{ 
+    /* On initialise la variable de retour */ 
+    $modifie = false; 
+    
+      $nb_articles = count($_SESSION['panier']['id_article']); 
+            for($i = 0; $i < $nb_articles; $i++) 
+            { 
+                if($ref_article == $_SESSION['panier']['id_article'][$i]) 
+                { 
+                    $_SESSION['panier']['qte'][$i] += 1; 
+                    $modifie = true; 
+                } 
+            } 
+       
+    return $modifie; 
+} 
+
+
+
+
+
 function modif_qte($ref_article, $qte) 
 { 
     /* On initialise la variable de retour */ 
@@ -105,7 +129,7 @@ function supprim_article($ref_article)
         if(nombre_article($ref_article) != false) 
         { 
             /* création d'un tableau temporaire de stockage des articles */ 
-            $panier_tmp = array("id_article"=>array(),"qte"=>array(),"taille"=>array(),"prix"=>array()); 
+            $panier_tmp = array("id_article"=>array(),"nom"=>array(),"qte"=>array(),"srcimg"=>array(),"taille"=>array(),"prix"=>array()); 
             /* Comptage des articles du panier */ 
             $nb_articles = count($_SESSION['panier']['id_article']); 
             /* Transfert du panier dans le panier temporaire */ 
@@ -115,9 +139,12 @@ function supprim_article($ref_article)
                 if($_SESSION['panier']['id_article'][$i] != $ref_article) 
                 { 
                     array_push($panier_tmp['id_article'],$_SESSION['panier']['id_article'][$i]); 
+                    array_push($panier_tmp['nom'],$_SESSION['panier']['nom'][$i]); 
                     array_push($panier_tmp['qte'],$_SESSION['panier']['qte'][$i]); 
+                    array_push($panier_tmp['srcimg'],$_SESSION['panier']['srcimg'][$i]); 
                     array_push($panier_tmp['taille'],$_SESSION['panier']['taille'][$i]); 
                     array_push($panier_tmp['prix'],$_SESSION['panier']['prix'][$i]); 
+
                 } 
             } 
             /* Le transfert est terminé, on ré-initialise le panier */ 

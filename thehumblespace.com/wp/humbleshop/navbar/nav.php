@@ -7,16 +7,16 @@
                   <a href="../home/index.php">Acceuil</a>
                </li>
                <li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25">
-                  <a href="../shop/index.php?type=">BOUTIQUE</a>
+                  <a href="../shop/index.php?type=&amp;categ=">BOUTIQUE</a>
                   <ul class="nav">
                      <li id="menu-item-482" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-482">
-                        <a href="../shop/index.php?type=h">Homme</a>
+                        <a href="../shop/index.php?type=h&amp;categ=">Homme</a>
                      </li>
                      <li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-206">
-                        <a href="../shop/index.php?type=f">Femme</a>
+                        <a href="../shop/index.php?type=f&amp;categ=">Femme</a>
                      </li>
                      <li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-206">
-                        <a href="../shop/index.php?type=e">Enfant</a>
+                        <a href="../shop/index.php?type=e&amp;categ=">Enfant</a>
                      </li>
                   </ul>
                </li>
@@ -27,7 +27,7 @@
                         <a href="../checkout/index.php">Checkout</a>
                      </li>
                      <li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24">
-                        <a href="../cart/index.php">Chariot</a>
+                        <a href="../cart/index.php">Panier</a>
                      </li>
                   </ul>
                </li>

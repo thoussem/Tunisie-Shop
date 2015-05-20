@@ -16,6 +16,19 @@
                 
                 vider_panier();
             }
+
+            function maj_chariot(){
+              $nb_articles = count($_SESSION['panier']['id_article']); 
+              for($i = 0; $i < $nb_articles; $i++) 
+                { 
+                    $_SESSION['panier']['qte'][$i] =$_POST['qte'.$_SESSION['panier']['id_article'][$i]]; 
+                    
+            } 
+            }
+
+            if(isset($_POST['maj_chariot'])){
+              maj_chariot();
+            }
          
             
          ?>
@@ -24,7 +37,7 @@
       <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
       <![endif]-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Chariot | HumbleShop</title>
+      <title>Panier | TunisieShop</title>
       <link rel="profile" href="http://gmpg.org/xfn/11" />
       <link rel="pingback" href="../xmlrpc.php" />
       <!--Favicon-->
@@ -79,7 +92,7 @@
          <section class="page">
             <div class="row">
                <header class="col-xs-12 prime">
-                  <h3>Chariot</h3>
+                  <h3>Panier</h3>
                </header>
             </div>
             <div class="wrap">
@@ -94,11 +107,11 @@
                            <?php if(count($_SESSION['panier']['id_article'])==0): ?>
                            <p class="cart-empty">Votre panier est actuellement vide.</p>
                            <p class="return-to-shop">
-                              <a class="button wc-backward" href="../shop/index.php?type=">Retour à la boutique</a>
+                              <a class="button wc-backward" href="../shop/index.php?type=&amp;categ=">Retour à la boutique</a>
                            </p>
                            <?php else : ?>
 
-                           <form action="http://thehumblespace.com/wp/humbleshop/cart/" method="post">
+                           <form action="" method="post">
                               <table class="shop_table cart table" cellspacing="0">
                                  <thead>
                                     <tr>
@@ -118,10 +131,7 @@
                                         
                                        for($i = 0; $i < $nb_art; $i++) 
                                        { 
-                                        $id=$_SESSION['panier']['id_article'][$i];
-                                            
-                                        $ses_sql=mysqli_query($conn,"SELECT `srcimg`,`nom` FROM `articles` WHERE id='$id';");
-                                        $row=mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
+                                        
                                        
                                         echo '
                                         <tr class="cart_item">
@@ -130,11 +140,11 @@
                                         <a href="index.php?id='.$_SESSION['panier']['id_article'][$i].'" class="remove" title="Remove this item">×</a>                  </td>
                                        
                                         <td class="product-thumbnail">
-                                        <a href="../shop/shirt-with-attributes/index.php?id='.$_SESSION['panier']['id_article'][$i].'&amp;nom='.$row['nom'].'">
-                                        <img width="100" height="100" src="../wp-content/uploads/2013/01/'.$row['srcimg'].'" class="attachment-shop_thumbnail wp-post-image" alt="sample"></a>                  </td>
+                                        <a href="../shop/article/index.php?id='.$_SESSION['panier']['id_article'][$i].'&amp;nom='.$_SESSION['panier']['nom'][$i].'">
+                                        <img width="100" height="100" src="../wp-content/uploads/2013/01/'.$_SESSION['panier']['srcimg'][$i].'" class="attachment-shop_thumbnail wp-post-image" alt="sample"></a>                  </td>
                                        
                                         <td class="product-name">
-                                        <a href="../shop/shirt-with-attributes/index.php?id='.$_SESSION['panier']['id_article'][$i].'&amp;nom='.$row['nom'].'">'.$row['nom'].'</a>                  </td>
+                                        <a href="../shop/shirt-with-attributes/index.php?id='.$_SESSION['panier']['id_article'][$i].'&amp;nom='.$_SESSION['panier']['nom'][$i].'">'.$_SESSION['panier']['nom'][$i].'</a>                  </td>
                                        
                                         <td class="product-price">
                                         <span class="amount">'.$_SESSION['panier']['prix'][$i].'</span>                 </td>
@@ -157,10 +167,11 @@
                                        <td colspan="6" class="actions">
                                           <div class="row">
                                              <div class="col-sm-4 col-sm-offset-8">
-                                                <input type="submit" class="button btn-block btn-theme" name="update_cart" value="Update Cart">
+                                                <input type="submit" class="button btn-block btn-theme" name="maj_chariot" value="Mettre à jours le Chariot">
                                              </div>
                                           </div>
-                                          <input type="hidden" id="_wpnonce" name="_wpnonce" value="c778bb54f2"><input type="hidden" name="_wp_http_referer" value="/wp/humbleshop/cart/">          
+                                          <input type="hidden" id="_wpnonce" name="_wpnonce" value="c778bb54f2">
+                                          <input type="hidden" name="_wp_http_referer" value="/wp/humbleshop/cart/">          
                                        </td>
                                     </tr>
                                  </tbody>
