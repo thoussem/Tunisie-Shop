@@ -247,12 +247,12 @@
                                  <div class="thumbnails flexslider" id="flexcarousel-product">
                                     <ul class="slides">
                                        <?php
-                                          $couleur_sql=mysqli_query($conn,"SELECT * FROM `couleurs` WHERE idarticle='$id';");
-                                          while($row2=mysqli_fetch_array($couleur_sql,MYSQLI_ASSOC)){
+                                          $img_sql=mysqli_query($conn,"SELECT * FROM `image` WHERE idarticle='$id';");
+                                          while($row2=mysqli_fetch_array($img_sql,MYSQLI_ASSOC)){
                                             echo'
                                             <li>
-                                            <a href="../../wp-content/uploads/2013/01/'.$row2['imgcouleur'].'" class="zoom first" title="Sample" data-rel="prettyPhoto[product-gallery]">
-                                            <img width="455" height="475" src="../../wp-content/uploads/2013/01/'.$row2['imgcouleur'].'" class="attachment-shop_single" alt="Sample" />
+                                            <a href="../../wp-content/uploads/2013/01/'.$row2['srcimage'].'" class="zoom first" title="Sample" data-rel="prettyPhoto[product-gallery]">
+                                            <img width="455" height="475" src="../../wp-content/uploads/2013/01/'.$row2['srcimage'].'" class="attachment-shop_single" alt="Sample" />
                                             </a>
                                             </li>';
                                           }

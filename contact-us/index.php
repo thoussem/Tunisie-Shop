@@ -7,11 +7,21 @@
       <?php
          include("../connexion/lock.php");
          include("../panier/panier.php");
+         if(isset($_POST['send'])){
+            include 'smtp/Send_Mail.php';
+            $to      = 'tunisieShop2015@gmail.com';
+            $subject = "objet";
+            $body    = $_POST['nom'].' '.$_POST['email'].' '.$_POST['message'];
+
+            Send_Mail($to, $subject, $body);
+
+         }
+
          ?>
       <meta charset="UTF-8" />
      
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Contact | HumbleShop</title>
+      <title>Contact | TunisieShop</title>
       <link rel="profile" href="http://gmpg.org/xfn/11" />
       <link rel="pingback" href="../xmlrpc.php" />
      
@@ -64,8 +74,8 @@
          <section class="page">
             <div class="row">
                <header class="col-12">
-                  <!-- Replace data-center with your address -->
-                  <div class="gmap" id="map" data-center="69-135 Brompton Road Knightsbridge SW1X 0NA United Kingdom‎"></div>
+                  
+                  <div class="gmap" id="map" data-center="Ecole Nationale d'Ingénieurs de Carthage 45 Rue des Entrepreneurs 2035"></div>
                </header>
             </div>
             <div class="wrap">
@@ -96,7 +106,7 @@
                         <div class="content clearfix">
                            <div class="wpcf7" id="wpcf7-f176-p42-o1" dir="ltr">
                               <div class="screen-reader-response"></div>
-                              <form name="" action="http://thehumblespace.com/wp/humbleshop/contact-us/#wpcf7-f176-p42-o1" method="post" class="wpcf7-form" novalidate="novalidate">
+                              <form name="" action="index.php" method="post" class="wpcf7-form" novalidate="novalidate">
                                  <div style="display: none;">
                                     <input type="hidden" name="_wpcf7" value="176" />
                                     <input type="hidden" name="_wpcf7_version" value="4.1.1" />
@@ -107,7 +117,7 @@
                                  <div class="row">
                                     <div class="col-sm-4">
                                        <label>Nom</label><br />
-                                       <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" /></span>
+                                       <span class="wpcf7-form-control-wrap your-name"><input type="text" name="nom" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" /></span>
                                     </div>
                                     <div class="col-sm-4">
                                        <label>Email</label><br />
@@ -115,14 +125,14 @@
                                     </div>
                                     <div class="col-sm-4">
                                        <label>Objet</label><br />
-                                       <span class="wpcf7-form-control-wrap your-subject"><input type="text" name="your-subject" value="" size="40" class="wpcf7-form-control wpcf7-text form-control" aria-invalid="false" /></span>
+                                       <span class="wpcf7-form-control-wrap your-subject"><input type="text" name="objet" value="" size="40" class="wpcf7-form-control wpcf7-text form-control" aria-invalid="false" /></span>
                                     </div>
                                  </div>
                                  <p>
                                     <label>Message</label><br />
-                                    <span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea form-control" aria-invalid="false"></textarea></span>
+                                    <span class="wpcf7-form-control-wrap your-message"><textarea name="message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea form-control" aria-invalid="false"></textarea></span>
                                  </p>
-                                 <p><input type="submit" value="Evoyer" class="wpcf7-form-control wpcf7-submit btn btn-default" /></p>
+                                 <p><input type="submit" name="send" value="Evoyer" class=" btn btn-default" /></p>
                            </div>
                            <div class="wpcf7-response-output wpcf7-display-none"></div></form>
                         </div>

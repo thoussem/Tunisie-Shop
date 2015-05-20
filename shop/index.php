@@ -21,7 +21,7 @@
         $article['prix']=$row['prix'];
         ajout($article);
         
-        header("Location:index.php?article=".$row['nom']."&ajout='success'& type=".$_GET['type']."categ=".$_GET['categ']."");
+        header("Location:index.php?article=".$row['nom']."&ajout='success'& type=".$_GET['type']."&categ=".$_GET['categ']."");
         
     }
 
@@ -155,31 +155,20 @@
 
 
                             <p class="buttons">
-                                <a href="../cart/index.php" class="button wc-forward">Voir Chariot</a>
-                                <a href="http://thehumblespace.com/wp/humbleshop/checkout/" class="button checkout wc-forward">Checkout</a>
+                                <a href="../cart/index.php" class="button wc-forward">Voir Panier</a>
+                                <a href="../checkout/index.php" class="button checkout wc-forward">Vérifier</a>
                             </p>
 
 
                         </div>
                     </aside>
                     <aside id="woocommerce_price_filter-3" class="widget woocommerce widget_price_filter">
-                        <p class="title">Filtrer par prix</p>
-                        <form method="get" action="http://thehumblespace.com/wp/humbleshop/shop">
+                    
+                        <form method="get" action="">
                            <div class="price_slider_wrapper">
-                            <div class="price_slider" style="display:none;"></div>
-                            <div class="price_slider_amount">
-                             <input type="text" id="min_price" name="min_price" value="" data-min="25" placeholder="Min price" />
-                             <input type="text" id="max_price" name="max_price" value="" data-max="355" placeholder="Max price" />
-                             <button type="submit" class="button">Filter</button>
-                             <div class="price_label" style="display:none;">
-                              Prix: <span class="from"></span> &mdash; <span class="to"></span>
-                          </div>
-
-                          <div class="clear"></div>
-
-                      </div>
+                           
                       
-                      <h3><a href="#ho" onclick="showhide('h');" onmouseover="showhide('h');" id="ho">Homme</a></h3>
+                      <h3><a href="index.php?type=h&categ=" onclick="showhide('h');" onmouseover="showhide('h');" id="ho">Homme</a></h3>
                       <ul class="current" id="h" <?php $type=$_GET['type']; if($type=='h') {echo 'style="display:block"';} else {echo 'style="display:none"';} ?>>
                         
                     
@@ -280,7 +269,7 @@
                         
                     </ul>
 
-                        <h3><a href="#fe" onclick="showhide('f');" onmouseover="showhide('f');" id="fe">Femme</a></h3>
+                        <h3><a href="index.php?type=f&categ=" onclick="showhide('f');" onmouseover="showhide('f');" id="fe">Femme</a></h3>
                       <ul class="current" id="f" <?php $type=$_GET['type']; if($type=='f') {echo 'style="display:block"';} else {echo 'style="display:none"';} ?>>
                         
                     
@@ -396,7 +385,7 @@
                         
                         
                     </ul>
-                        <h3><a href="#en" onclick="showhide('e');" onmouseover="showhide('e');" id="en">Enfant</a></h3>
+                        <h3><a href="index.php?type=en&categ=" onclick="showhide('e');" onmouseover="showhide('e');" id="en">Enfant</a></h3>
                       <ul class="current" id="e" <?php $type=$_GET['type']; if($type=='e') {echo 'style="display:block"';} else {echo 'style="display:none"';} ?> >
                         
                     
@@ -525,7 +514,7 @@
          <?php if(isset($_GET['ajout'])):?>
          <div class="row shoptop">
         <div class="woocommerce-message alert alert-success text-left">
-          <a href="http://thehumblespace.com/wp/humbleshop/cart/" class="button wc-forward">Voir Panier</a>
+          <a href="../cart/index.php" class="button wc-forward">Voir Panier</a>
           "<?php echo $_GET['article']; ?>" a été ajouté à votre panier.
         </div>
         </div>
