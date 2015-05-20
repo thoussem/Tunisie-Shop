@@ -31,7 +31,7 @@
   <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Products | HumbleShop</title>
+  <title>Acceuil | TunisieShop</title>
 
 
   <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -145,7 +145,7 @@
              <li id="menu-item-489" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-489">
               <a href="../checkout/index.php">Checkout</a></li>
               <li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24">
-                <a href="../cart/index.php">Chariot</a></li>
+                <a href="../cart/index.php">Panier</a></li>
               </ul>
             </li>             
             <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44">
